@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hiroto1213/myserver-nodejs/issues"
   },
-  "homepage": "https://github.com/hiroto1213/myserver-nodejs#readme"
+  "homepage": "https://github.com/hiroto1213/myserver-nodejs#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
