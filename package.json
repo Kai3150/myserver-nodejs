@@ -1,0 +1,19 @@
+{
+  "name": "nodejs_tutorial",
+  "version": "1.0.0",
+  "description": "myserver-nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiroto1213/myserver-nodejs.git"
+  },
+  "author": "hirotokato",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hiroto1213/myserver-nodejs/issues"
+  },
+  "homepage": "https://github.com/hiroto1213/myserver-nodejs#readme"
+}
