@@ -4,7 +4,8 @@ $(function () {
 	var rotate = function (logo, angle) {
 		logo.css({
 			"transform": "rotate(" + angle + "deg)",
-			"transition-duration": "0.8s"
+			"transition-duration": "0.8s",
+			// "transform-origin": "621px 311px"
 		});
 	}
 
