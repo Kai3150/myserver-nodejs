@@ -1,14 +1,18 @@
-const http = require('http');
+var mysql = require('mysql2');
 
-const hostname = '127.0.0.1';
-const port = 3000;
-
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "Kkkh3150",
+  database: "gijiroku"
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+con.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected!");
+  //var sql = "INSERT INTO gijiroku (json_data) VALUES ()";
+  // con.query(sql, function (err, result) {
+  //   if (err) throw err;
+  //   console.log("1 record inserted");
+  // });
 });
