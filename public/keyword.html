@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="keyword.css">
+          <!-- jQuery読み込み -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+          <!-- favicon設定 -->
+    <!-- 	    <link rel="shortcut icon" href="img/favicon.ico"> -->
+          <!-- fontAwesome設定 -->
+          <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
     <div class="haikei">
@@ -67,7 +73,7 @@
         
       </div>
           
-        </div>
+        
         <div class="flex-wrapper-two">
           <div class="">
             <!-- Include here the component "" -->
@@ -85,7 +91,7 @@
             src="https://static.overlay-tech.com/assets/9bb4921f-9475-4718-9655-56fe24f89b58.svg"
           ></img>
           <div class="time"></div>
-          <p class="day">11/25</p>
+          <a href="keyword2.html"><p class="day">11/25</p></a>
           <a href="date.html">
           <div class="num-1-1">
             <img
@@ -95,9 +101,11 @@
             />
           </div>
           </a>
-          <div id="scrollarea">
+          <div id="sa">
             <div id="keywords">
               <a href="detail.html">
+              <ul>  
+                <li class="c1">_
                 <img
                   alt=""
                   class="cir1"
@@ -106,6 +114,8 @@
                 <p class="kw11">1</p>
                 <p class="kw12">1</p>
                 <p class="kw13">1</p>
+                </li>
+                <li class="c2">
                 <img
                   alt=""
                   class="cir2"
@@ -114,6 +124,8 @@
                 <p class="kw21">1</p>
                 <p class="kw22">1</p>
                 <p class="kw23">1</p>
+                </li>
+                <li class="c3">
                 <img
                   alt=""
                   class="cir3"
@@ -122,6 +134,8 @@
                 <p class="kw31">1</p>
                 <p class="kw32">1</p>
                 <p class="kw33">1</p>
+                </li>
+                <li class="c4">
                 <img
                   alt=""
                   class="cir4"
@@ -130,16 +144,17 @@
                 <p class="kw41">1</p>
                 <p class="kw42">1</p>
                 <p class="kw43">1</p>
-                </a>
+                </li>
+              </ul>
+            </a>
             </div>
           </div>
-          
-          
         </div>
         </div>
       </div>
-  <script src="keyoword.js"></script>
-      
+      <script src="keywordAPI.js"></script>
+      <script src="keyword.js"></script>
+
     
 </body>
 </html>

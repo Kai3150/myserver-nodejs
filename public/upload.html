@@ -68,19 +68,28 @@
       </div>
           
         </div>
-        <div class="flex-wrapper-two">
-          <div class="a">
-            <!-- Include here the component "" -->
-          </div>
-          <img
-            alt=""
-            class="daen"
-            src="https://static.overlay-tech.com/assets/ae43b286-c5e4-49e6-b535-44d987fddff9.png"
-          />
-          <p class="sent">
-            動画・音声ファイル<br />
-              をアップロード
-          </p>
+
+
+          <div id="upFileWrap">
+
+            <input type="file" accept="video/mp4,video/mov,audio/mp3,audio/mav">
+            <div id="inputFile">
+                <!-- ドラッグ&ドロップエリア -->
+                <p id="dropArea">ここに動画・音声ファイルをドロップしてください<br>または</p>
+        
+                <!-- 通常のinput[type=file] -->
+                <div id="inputFileWrap">
+                    <form action="./upload" method="post" enctype="multipart/form-data">
+                      <input type="file" name="uploadFile" id="uploadFile">
+                      <div id="btnInputFile"><span>ファイルを選択する</span></div>
+                      <div id="btnChangeFile"><span>ファイルを変更する</span></div>
+                      <button type="submit">送信</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- <script src="upload.js"></script> -->
         </div>
       </div>
       
