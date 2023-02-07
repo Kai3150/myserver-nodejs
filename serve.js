@@ -9,23 +9,8 @@ app.use(express.urlencoded({extended: true}));
 // app.use(express.static('public/js'));
 // app.use(express.static('public'));
 
-// ルーティングの設定
-// app.post("/", (req, res) =>{
-//   const name = req.body.name;
-//   res.send(`君の名は ${name}`);
-//   console.log("/ へアクセスがありました");
-// })
-
 app.get("/", (req, res) =>{
   res.sendFile(`${__dirname}/public/detail.html`);
-  // console.log("/ へアクセスがありました");
-  // var pyshell = new PythonShell('files/sample.py');
-  // console.log(21)
-  // pyshell.on('message', function (data) {
-  //   console.log(22);
-  //   let json = JSON.parse(data);
-  //   console.log(json);
-  // });
 });
 
 app.get("/:file", (req, res) =>{
@@ -40,8 +25,11 @@ app.get("/public/gijiroku", (req, res) =>{
   pyshell.on('message', function (data) {
     let json = JSON.parse(data);
     console.log(999);
+    res.json(json);
+    console.log(json);
+
   });
-  res.json({user: 'tobi'})
+  console.log(44);
 });
 
 // HTTPサーバを起動する

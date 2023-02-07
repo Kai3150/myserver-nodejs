@@ -140,34 +140,196 @@ line-height: 12px;
 color: #FFFCFC; 
 }
 
-.title{
-    position: relative;
-width: 253px;
-height: 49px;
-left: 570px;
-top: 45px;
+.rectangle-1 {
+    box-sizing: border-box;
 
-font-family: 'Noto Serif JP';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 46px;
+position: absolute;
+width: 608px;
+height: 42px;
+left: 256px;
+top: 93px;
 
-color: #D9D9D9;
+background: #D9D9D9;
+border: 1px solid #000000;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+transform: matrix(1, 0, 0, -1, 0, 0);
+}
+.group-1 {
+    position: absolute;
+width: 18px;
+height: 23px;
+left: 831px;
+top: 104px;
+}
+.image-4 {
+    position: absolute;
+    width: 24px;
+    height: 25px;
+    left: 624px;
+    top: 332px;
+    
+    background: url(image.png);
+}
+.line-14{
+    position: absolute;
+width: 372px;
+height: 0px;
+left: 280px;
+top: 322px;
+
+border: 1px solid #6B6A6A;
 }
 
-.text{
+.kensaku{
     position: absolute;
-width: 600px;
-height: 450px;
-left: 342px;
-top: 172px;
+width: 61px;
+height: 32px;
+left: 266px;
+top: 85px;
 
-font-family: 'Noto Serif JP';
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #262222;
+}
+
+.kensakuop{
+    position: absolute;
+width: 335px;
+height: 35px;
+left: 273px;
+top: 130px;
+
+font-family: 'Inter';
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
-line-height: 23px;
+line-height: 19px;
 
-color: #D9D9D9;
+color: #A8A8A8;
 }
+
+.user{
+    position: absolute;
+width: 117px;
+height: 37px;
+left: 278px;
+top: 163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+}
+
+.time{
+    position: absolute;
+width: 106px;
+height: 31px;
+left: 279px;
+top: 198px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+}
+
+.day{
+    
+position: absolute;
+width: 99px;
+height: 36px;
+left: 279px;
+top: 234px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+}
+
+.tag{
+    position: absolute;
+width: 128px;
+height: 52px;
+left: 278px;
+top: 270px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+}
+
+.rireki{
+    position: absolute;
+width: 64px;
+height: 26px;
+left: 282px;
+top: 323px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+
+color: #FFFFFF;
+}
+
+.eve{
+    position: absolute;
+width: 64px;
+height: 35px;
+left: 308px;
+top: 342px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+}
+
+.last{
+    position: absolute;
+width: 82px;
+height: 22px;
+left: 307px;
+top: 377px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+
+}
+
+
+
+
+
+
+
