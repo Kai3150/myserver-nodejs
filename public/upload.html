@@ -64,9 +64,9 @@
         <p class="setting">SETTING</p>
         </div>
         </a>
-        
+
       </div>
-          
+
         </div>
 
 
@@ -76,23 +76,23 @@
             <div id="inputFile">
                 <!-- ドラッグ&ドロップエリア -->
                 <p id="dropArea">ここに動画・音声ファイルをドロップしてください<br>または</p>
-        
+
                 <!-- 通常のinput[type=file] -->
                 <div id="inputFileWrap">
-                    <form action="./upload" method="post" enctype="multipart/form-data">
+                    <form action="upload" id="frm" method="post" enctype="multipart/form-data">
                       <input type="file" name="uploadFile" id="uploadFile">
                       <div id="btnInputFile"><span>ファイルを選択する</span></div>
                       <div id="btnChangeFile"><span>ファイルを変更する</span></div>
-                      <button type="submit">送信</button>
+                      <button type="submit" class="btn">送信</button>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- <script src="upload.js"></script> -->
+        <script src="upload.js"></script>
         </div>
       </div>
-      
-    
+
+
 </body>
 </html>
