@@ -142,10 +142,10 @@ color: rgb(50, 49, 49);
 
 .title{
     position: fixed;
-width: 253px;
-height: 49px;
-left: 600px;
-top: 35px;
+width: 50%;
+height: 40%;
+left: 50%;
+top: 5%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -159,10 +159,10 @@ color: #9B9999;
 
 .text{
 position: fixed;
-width: 456px;
-height: 305px;
-left: 500px;
-top: 144px;
+width: 50%;
+height: 60%;
+left: 30%;
+top: 20%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
