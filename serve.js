@@ -41,6 +41,7 @@ app.get("/public/gijiroku", (req, res) =>{
 
 //database to client request
 app.get("/public/query", (req, res) => {
+  const query = 'select distinct date, name from paragraph where date = (select max(date) from paragraph)'
   con.query('SELECT date from paragraph;', function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     console.log(results);
