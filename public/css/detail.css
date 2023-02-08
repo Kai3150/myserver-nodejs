@@ -141,11 +141,11 @@ color: rgb(50, 49, 49);
 
 
 .title{
-    position: relative;
-width: 253px;
-height: 49px;
-left: 570px;
-top: 45px;
+    position: absolute;
+width: 20%;
+height: 40%;
+left: 50%;
+top: 10%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -158,10 +158,10 @@ color: #D9D9D9;
 
 .text{
     position: absolute;
-width: 600px;
-height: 450px;
-left: 342px;
-top: 172px;
+width: 55%;
+height: 70%;
+left: 25%;
+top: 32%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;

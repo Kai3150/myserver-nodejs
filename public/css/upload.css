@@ -194,13 +194,13 @@ color: rgb(50, 49, 49);
 #btnInputFile span,
 #btnChangeFile span {
     cursor: pointer;
-    position: relative;
+    position: absolute;
     z-index: 2;
     display: table-cell;
     width: 200px;
     height: 60px;
-    top: 70%;
-    left: 25%;
+    top: 500%;
+    left: 40%;
     border: 1px solid #333;
     border-radius: 4px;
     background: #333;
@@ -221,4 +221,10 @@ color: rgb(50, 49, 49);
     top: 55%;
     left: 40%;
     font-size: 20px;
+}
+
+.sousin{
+    position: fixed;
+    top: 100%;
+    left: 100%;
 }

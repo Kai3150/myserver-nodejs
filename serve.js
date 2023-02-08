@@ -39,36 +39,37 @@ app.get("/public/gijiroku", (req, res) =>{
   });
 });
 
-//database request
-app.get("/query", (req, res) => {
-  con.query('SELECT * from gijiroku;', function (err, rows, fields) {
+//database to client request
+app.get("/public/query", (req, res) => {
+  con.query('SELECT date from paragraph;', function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
-    console.log(rows);
+    console.log(results);
     // console.log('name: ' + rows[0].name);
     // console.log('id: ' + rows[0].id);
-
+    res.send(results);
   });
 });
 
+//client to database post
 app.post('/insert', upload.single('file'), function (req, res) {
-  console.log(54);
   const pyshell = new PythonShell('files/sample.py');
   pyshell.on('message', function (data) {
     const json = JSON.parse(data);
-
     //send date to database
-    const sql = "INSERT INTO gijiroku (json_data) VALUES (" + json + ")";
-    con.query(sql, function (err, result) {
-      if (err) throw err;
-      console.log("1 record inserted");
-      alert('insert to gijiroku database');
-    });
+    for (var i = 1; i < json.length; i++) {
+      const prg = json[i];
+      const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + prg["keyword"] + "','" + prg["text"] + "','" + "宮崎ゼミ" + "','" + "2009-08-03" + "')";
+      con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("1 record inserted");
+      });
+    }
+
   });
 });
 
 app.post('/upload', upload.single('file'), function(req, res) {
   res.sendFile(`${__dirname}/public/upload.html`);
-  // alert("ファイルアップロードが完了しました")
 })
 
 // HTTPサーバを起動する

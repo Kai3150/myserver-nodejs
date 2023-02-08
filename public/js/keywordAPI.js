@@ -1,4 +1,3 @@
-// HTMLファイル内のクラスとの対応付け
 // const kw11 = document.querySelector(".kw11");
 // const kw12 = document.querySelector(".kw12");
 // const kw13 = document.querySelector(".kw13");
@@ -13,14 +12,14 @@
 // const kw43 = document.querySelector(".kw43");
 
 // const kw = ["kw11", "kw12", "kw13", "kw21", "kw22", "kw23", "kw31", "kw32", "kw33", "kw41", "kw42", "kw43"];
+
+
 var kw = [
     [".kw11", ".kw12", ".kw13"], 
     [".kw21", ".kw22", ".kw23"],
     [".kw31", ".kw32", ".kw33"],
     [".kw41", ".kw42", ".kw43"]
   ];
-
-
 
 // jsonデータから挿入
 fetch("http://localhost:3000/public/gijiroku")
@@ -37,6 +36,11 @@ fetch("http://localhost:3000/public/gijiroku")
             }
         }
     })
+
+function kw11(){
+    fetch("http://localhost:3000/public/kw11")
+}
+
 //     .then(json => insertKw11(json, kw11))
 //     .then(json => insertKw12(json, kw12))
 //     .then(json => insertKw13(json, kw13))

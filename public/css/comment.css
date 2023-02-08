@@ -326,10 +326,10 @@ color: #115FA8;
 
 .comline{
     position: absolute;
-width: 70%;
+width: 50%;
 height: 0px;
-left: 284px;
-top: 14px;
+left: 21%;
+top: 2%;
 
 border: 2px solid #000000;
 transform: rotate(0.11deg);

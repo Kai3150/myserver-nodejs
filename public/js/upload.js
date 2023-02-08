@@ -43,11 +43,14 @@ fileInput.addEventListener('change', function(e){
     if (typeof e.target.files[0] !== 'undefined') {
         console.log(e.target.files[0]);
         // ファイルが正常に受け取れた際の処理
-        fetch("http://localhost:3000/upload", {
-            method: 'POST',
-            body: fd
+        // fetch("http://localhost:3000/upload", {
+        //     method: 'POST',
+        //     body: fd
+        // })
+        fetch("http://localhost:3000/insert", {
+            method: 'POST'
         })
-            .then(res => console.log(res))
+            .then(res => console.log(res.text))
     } else {
 
         // ファイルが受け取れなかった際の処理
@@ -55,8 +58,9 @@ fileInput.addEventListener('change', function(e){
 
 }, false);
 
-document.getElementById('frm').onsubmit = function () {
-    fetch("http://localhost:3000/insert", {
-        method: 'POST',
-    })
-};
+
+// document.getElementById('frm').onsubmit = function () {
+//     fetch("http://localhost:3000/insert", {
+//         method: 'POST'
+//     })
+// };

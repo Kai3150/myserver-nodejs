@@ -141,10 +141,10 @@ color: rgb(50, 49, 49);
 
 .title{
     position: absolute;
-width: 162px;
-height: 52px;
-left: 507px;
-top: 0px;
+width: 20%;
+height: 30%;
+left: 40%;
+top: 0%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -159,10 +159,10 @@ color: #D9D9D9;
     box-sizing: border-box;
 
 position: absolute;
-width: 228px;
-height: 212px;
-left: 458px;
-top: 300px;
+width: 20%;
+height: 40%;
+left: 37%;
+top: 50%;
 
 background: #D9D9D9;
 border: 1px solid #000000;
@@ -174,10 +174,10 @@ z-index: 2;
     box-sizing: border-box;
 
 position: absolute;
-width: 184px;
-height: 175px;
-left: 625px;
-top: 212px;
+width: 17%;
+height: 34%;
+left: 53%;
+top: 37%;
 
 background: #D9D9D9;
 border: 1px solid #000000;
@@ -189,10 +189,10 @@ z-index: 1;
     box-sizing: border-box;
 
 position: absolute;
-width: 154px;
-height: 150px;
-left: 584px;
-top: 94px;
+width: 14%;
+height: 28%;
+left: 46%;
+top: 17%;
 
 background: #D9D9D9;
 border: 1px solid #000000;
@@ -204,10 +204,10 @@ z-index: 0;
     box-sizing: border-box;
 
 position: absolute;
-width: 161px;
-height: 150px;
-left: 423px;
-top: 94px;
+width: 14%;
+height: 28%;
+left: 32%;
+top: 17%;
 
 background: #D9D9D9;
 border: 1px solid #000000;
@@ -219,10 +219,10 @@ z-index: 0;
     box-sizing: border-box;
 
 position: absolute;
-width: 179px;
-height: 176px;
-left: 328px;
-top: 212px;
+width: 17%;
+height: 34%;
+left: 25%;
+top: 37%;
 
 background: #D9D9D9;
 border: 1px solid #000000;
