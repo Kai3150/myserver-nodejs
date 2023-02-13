@@ -1,5 +1,5 @@
 ＜最新の日付をセレクトするクエリ＞
 select distinct date, name from paragraph where date = (select max(date) from paragraph);
 
-
+＜insert後の重複を改善するクエリ＞
 
