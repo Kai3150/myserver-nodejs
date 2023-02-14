@@ -56,7 +56,7 @@ class Paragraph:
             self.text = re.sub(r'[、].{0,5}[、。]', '、', self.text)  # 削除
             self.text = re.sub(r'[。].{0,5}[、。]', '。', self.text)  # 削除
             self.text = re.sub(r'^.{0,5}[、。]', '', self.text)  # 削除
-    
+
     def summarize(self):
         count = len(self.text.split('。'))
         count = round(count/4)#25%のこし
@@ -75,20 +75,18 @@ class Paragraph:
         sentences = ""
         for sentence in summarizer(parser.document, SENTENCES_COUNT):
             sentences = sentences + sentence.__str__()
-            
+
         self.text = sentences
 
 
 f = open('output0.pkl', 'rb')
 result = pickle.load(f)
-print(result['text'])
+#print(result['text'])
 
 paragraph = Paragraph(result['text'])
 print('###################################################################################################')
 print(paragraph.text)
 print(len(paragraph.text))
 print('###################################################################################################')
-paragraph.gpt_summerize()
-print(paragraph.text)
-
-
+# paragraph.gpt_summerize()
+# print(paragraph.text)

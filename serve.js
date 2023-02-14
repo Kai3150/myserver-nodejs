@@ -1,13 +1,13 @@
 const express = require("express");
 const app  = express();
 const port = 3000;
+require('dotenv').config();
 
-const path = require('path');
 const multer = require('multer')
 const {PythonShell} = require('python-shell');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
-const { log } = require("console");
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
@@ -149,7 +149,7 @@ app.get("/public/detailhtml", (req, res) => {
     const keywords = results[0].keywords;
     const content = results[0].content;
 
-    res.render("detail.ejs", { 
+    res.render("detail.ejs", {
       keywords: keywords,
       content: content
      }
@@ -185,10 +185,16 @@ app.listen(port, () => {
 });
 
 //データベースとの接続
+// const con = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "010832",
+//   database: "gijiroku"
+// });
 const con = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "010832",
+  user: process.env.SQL_USER_NAME,
+  password: process.env.SQL_PASS,
   database: "gijiroku"
 });
 con.connect(function (err) {
