@@ -58,9 +58,3 @@ fileInput.addEventListener('change', function(e){
 
 }, false);
 
-
-// document.getElementById('frm').onsubmit = function () {
-//     fetch("http://localhost:3000/insert", {
-//         method: 'POST'
-//     })
-// };
