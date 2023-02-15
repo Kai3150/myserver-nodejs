@@ -1,96 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="upload.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/upload.css">
 </head>
 <body>
-    <div class="haikei">
-      <div class="flex-wrapper-one">
-        <a href="/public/datehtml">
+  <div class="haikei">
+    <div class="flex-wrapper-one">
+      <a href="/public/datehtml">
         <div class="icon">
-          <img
-          alt=""
-          class="homei"
-          src="https://static.overlay-tech.com/assets/28c74ab9-3a4b-47ba-96d5-cccb59e25b90.png"
-        />
-        <p class="home">HOME</p>
+          <img alt="" class="homei" src="https://static.overlay-tech.com/assets/28c74ab9-3a4b-47ba-96d5-cccb59e25b90.png" />
+          <p class="home">HOME</p>
         </div>
-        </a>
+      </a>
 
-        <a href="/comment.html">
+      <a href="/comment.html">
         <div class="icon">
-          <img
-            alt=""
-            class="commenti"
-            src="https://static.overlay-tech.com/assets/9577c39e-9967-4125-bd3a-09c0f69d49eb.svg"
-          />
+          <img alt="" class="commenti" src="https://static.overlay-tech.com/assets/9577c39e-9967-4125-bd3a-09c0f69d49eb.svg" />
           <p class="comment">COMMENT</p>
         </div>
-        </a>
+      </a>
 
-        <a href="/search.html">
+      <a href="/search.html">
         <div class="icon">
-          <img
-          alt=""
-          class="searchi"
-          src="https://static.overlay-tech.com/assets/b0a2f06d-0988-4432-836e-fb58664d7ee4.svg"
-        />
-        <p class="search">SEARCH</p>
+          <img alt="" class="searchi" src="https://static.overlay-tech.com/assets/b0a2f06d-0988-4432-836e-fb58664d7ee4.svg" />
+          <p class="search">SEARCH</p>
         </div>
-        </a>
+      </a>
 
-        <a href="/upload.html">
+      <a href="/upload.html">
         <div class="icon">
-          <img
-          alt=""
-          class="uploadi"
-          src="https://static.overlay-tech.com/assets/2cac0365-75fe-4eee-a30d-c732f6b6641b.svg"
-        />
-        <p class="upload">UPLOAD</p>
+          <img alt="" class="uploadi" src="https://static.overlay-tech.com/assets/2cac0365-75fe-4eee-a30d-c732f6b6641b.svg" />
+          <p class="upload">UPLOAD</p>
         </div>
-        </a>
+      </a>
 
-        <a href="/setting.html">
+      <a href="/setting.html">
         <div class="icon">
-          <img
-          alt=""
-          class="settingi"
-          src="https://static.overlay-tech.com/assets/28ea5c18-b9c0-45fe-a8b9-59fe9b4ae169.svg"
-        />
-        <p class="setting">SETTING</p>
+          <img alt="" class="settingi" src="https://static.overlay-tech.com/assets/28ea5c18-b9c0-45fe-a8b9-59fe9b4ae169.svg" />
+          <p class="setting">SETTING</p>
         </div>
-        </a>
+      </a>
+    </div>
+  </div>
+  <div id="upFileWrap">
 
+    <input type="file" accept="video/mp4,video/mov,audio/mp3,audio/mav">
+    <div id="inputFile">
+      <!-- ドラッグ&ドロップエリア -->
+      <p id="dropArea">ここに動画・音声ファイルをドロップしてください<br>または</p>
+
+      <!-- 通常のinput[type=file] -->
+      <div id="inputFileWrap">
+        <!-- <form action="upload" id="frm" method="post" enctype="multipart/form-data"> -->
+        <form id="frm" method="get" action="#" enctype="multipart/form-data">
+          <input type="file" name="uploadFile" id="uploadFile">
+          <div id="btnInputFile">
+            <span>ファイルを選択する</span>
+          </div>
+          <button type="button" class="btn" onclick="insert()">送信</button>
+        </form>
       </div>
+    </div>
+  </div>
 
-        </div>
-
-
-          <div id="upFileWrap">
-
-            <input type="file" accept="video/mp4,video/mov,audio/mp3,audio/mav">
-            <div id="inputFile">
-                <!-- ドラッグ&ドロップエリア -->
-                <p id="dropArea">ここに動画・音声ファイルをドロップしてください<br>または</p>
-
-                <!-- 通常のinput[type=file] -->
-                <div id="inputFileWrap">
-                    <form action="upload" id="frm" method="post" enctype="multipart/form-data">
-                      <input type="file" name="uploadFile" id="uploadFile">
-                      <div id="btnInputFile"><span>ファイルを選択する</span></div>
-                      <div id="btnChangeFile"><span>ファイルを変更する</span></div>
-                      <div id="sousin"><button type="submit" class="btn">送信</button></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <script src="upload.js"></script>
-        </div>
-      </div>
+  <script src="upload.js"></script>
+  </div>
+  </div>
 </body>
 </html>
