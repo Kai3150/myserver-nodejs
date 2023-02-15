@@ -52,6 +52,12 @@ app.get("/", (req, res) =>{
 
 app.get("/:file", (req, res) =>{
   const file = req.params.file;
+  console.log(file);
+  res.sendFile(`${__dirname}/public/${file}`);
+});
+app.get(":file", (req, res) => {
+  const file = req.params.file;
+  console.log(file);
   res.sendFile(`${__dirname}/public/${file}`);
 });
 
@@ -171,7 +177,19 @@ app.post('/insert', upload.single('file'), function (req, res) {
         console.log("1 record inserted");
       });
     }
+  });
+});
 
+app.post('/insert2', upload.single('file'), function (req, res) {
+  const pyshell = new PythonShell('files/s2t.py');
+  pyshell.on('message', function (data) {
+    const json = JSON.parse(data);
+    //send date to database
+    const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + json["keyword"] + "','" + json["text"] + "','" + "宮崎ゼミ" + "','" + json['date'] + "')";
+    // con.query(sql, function (err, result) {
+    //   if (err) throw err;
+    //   console.log("1 record inserted");
+    // });
   });
 });
 

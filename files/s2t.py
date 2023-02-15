@@ -12,6 +12,7 @@ import os
 import openai
 import pickle
 from dotenv import load_dotenv
+import json
 load_dotenv()
 
 
@@ -28,11 +29,11 @@ class Paragraph:
         model = 'text-davinci-003'
         print(len(self.text))
         if len(self.text) > 1300:
-            print('too long prompt')
+            #too long prompt
+            pass
         else:
             with open('response.pickle', 'wb') as f:
                 response = openai.Completion.create(model=model, prompt=self.text, max_tokens=500)
-                print(response['choices'][0]['text'])
                 self.text = response['choices'][0]['text']
                 pickle.dump(response, f)
 
@@ -84,9 +85,13 @@ result = pickle.load(f)
 #print(result['text'])
 
 paragraph = Paragraph(result['text'])
-print('###################################################################################################')
-print(paragraph.text)
-print(len(paragraph.text))
-print('###################################################################################################')
+# print('###################################################################################################')
+# print(paragraph.text)
+json_dict = {'keywords': ['ディベート大会', 'Webアプリ', 'イブ委員'], 'text': paragraph.text, 'date': '2023-02-15'}
+json_str = json.dumps(json_dict, ensure_ascii=False)
+print(json_str)
+
+# print(len(paragraph.text))
+# print('###################################################################################################')
 # paragraph.gpt_summerize()
 # print(paragraph.text)
