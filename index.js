@@ -56,7 +56,7 @@ app.get("/public/query", (req, res) => {
 });
 
 app.get("/public/datehtml", (req, res) => {
-  const query = 'select distinct id, date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph where date = (select max(date) from paragraph)'
+  const query = 'select distinct id, date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 5'
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     console.log(results)
@@ -116,7 +116,7 @@ app.get("/public/detailhtml", (req, res) => {
 // });
 
 app.get('/insert', function (req, res) {
-  var URL = 'http://127.0.0.1:8000/';
+  var URL = 'http://127.0.0.1:8000/parse';
   request.get({
     uri: URL,
     headers: { 'Content-type': 'application/json' },
