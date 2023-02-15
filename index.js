@@ -155,13 +155,14 @@ app.get("/public/detailhtml", (req, res) => {
 // });
 
 app.get('/insert', function (req, res) {
-  var URL = 'http://127.0.0.1:8000/s2t';
+  var URL = 'http://127.0.0.1:8000/';
   request.get({
     uri: URL,
     headers: { 'Content-type': 'application/json' },
     json: true
   }, function (err, req, data) {
-    console.log(data['keyword']);
+
+    console.log(data);
     const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + data["keyword"] + "','" + data["text"] + "','" + "宮崎ゼミ" + "','" + data['date'] + "')";
     con.query(sql, function (err, result) {
       if (err) throw err;

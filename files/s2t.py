@@ -1,5 +1,4 @@
 import re
-import pickle
 
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
@@ -10,53 +9,47 @@ from sumy.utils import get_stop_words
 
 import os
 import openai
-import pickle
 from dotenv import load_dotenv
-import json
 load_dotenv()
 
 
 class Paragraph:
     def __init__(self, text):
+        openai.api_key = os.environ['OPENAI_API_KEY']
+        self.model = 'text-davinci-003'
         self.text = text
-        self.keywords = []
+        self.keywords = ''
         self.text_clenging()
         self.summarize()
-        #self.gpt_summerize()
-        #self.gpt_extract()
+        self.gpt_summerize()
+        self.gpt_keyword()
+        self.response
 
     def gpt_summerize(self):
-        openai.api_key = os.environ['OPENAI_API_KEY']
-
         prompt = "Summarize the sentences below in bullet point format in Japanese." + "\n" + self.text
-
-        model = 'text-davinci-003'
         print(len(self.text))
-        if len(self.text) > 1300:
-            #too long prompt
+        if len(self.text) > 2000:
+            print("too long")
             pass
         else:
-            with open('response.pickle', 'wb') as f:
-                response = openai.Completion.create(model=model, prompt=prompt, max_tokens=500)
-                self.text = response['choices'][0]['text']
-                pickle.dump(response, f)
+            response = openai.Completion.create(model=self.model, prompt=prompt, max_tokens=500)
+            self.text = response['choices'][0]['text']
+            print(response['choices'][0]['text'])
+                
 
-    def gpt_extract(self):
-        openai.api_key = os.environ['OPENAI_API_KEY']
-
+    def gpt_keyword(self):
         prompt = "次の文章から重要なキーワードを３つ抽出してください。" + "\n" + self.text
 
-        model = 'text-davinci-003'
         print(len(self.text))
         if len(self.text) > 1300:
+            print("too long")
             #too long prompt
             pass
         else:
-            with open('response.pickle', 'wb') as f:#同じファイルでええやろか
-                response = openai.Completion.create(model=model, prompt=prompt, max_tokens=500)
-                self.keyword = response['choices'][0]['text']#ここはどう変えたらえんやろか
-                pickle.dump(response, f)
-
+            response = openai.Completion.create(model=self.model, prompt=prompt, max_tokens=500)
+            self.response = response
+            self.keywords = response['choices'][0]['text']
+            print(response['choices'][0]['text'])
 
     def text_clenging(self):
         self.text = re.sub(' ', '、', self.text)  # 空白削除
@@ -84,7 +77,7 @@ class Paragraph:
         count = round(count/4)#25%のこし
 
         LANGUAGE = "japanese"  # 言語指定
-        SENTENCES_COUNT = 20#count  # 要約文数
+        SENTENCES_COUNT = 20#count  # 要約文数 => 2000文字以下になる。
 
 
         # parser = PlaintextParser.from_file("document.txt", Tokenizer(LANGUAGE))
@@ -99,20 +92,3 @@ class Paragraph:
             sentences = sentences + sentence.__str__()
 
         self.text = sentences
-
-
-f = open('output0.pkl', 'rb')
-result = pickle.load(f)
-#print(result['text'])
-
-paragraph = Paragraph(result['text'])
-# print('###################################################################################################')
-# print(paragraph.text)
-json_dict = {'keyword': ['ディベート大会', 'Webアプリ', 'イブ委員'], 'text': paragraph.text, 'date': '2023-02-15'}
-json_str = json.dumps(json_dict, ensure_ascii=False)
-print(json_str)
-
-# print(len(paragraph.text))
-# print('###################################################################################################')
-# paragraph.gpt_summerize()
-# print(paragraph.text)

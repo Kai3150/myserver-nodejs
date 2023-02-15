@@ -1,6 +1,6 @@
 from typing import Union
 from fastapi import FastAPI
-import s2t
+import parse
 
 app = FastAPI()
 
@@ -9,9 +9,9 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/s2t")
+@app.get("/parse")
 def read_content():
-    return s2t.json_dict
+    return parse.json_dict
 
 
 @app.get("/items/{item_id}")

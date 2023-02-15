@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/> 
     <!-- スタイルCSS -->
     <link rel="stylesheet" href="/date(kato).css">
+    <!-- フォントのリンク -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -52,6 +57,10 @@
 
     <div class="flex-wrapper-two">
 
+        <div class="title">
+            <%= title %>
+        </div>
+
         <div class="cir-1">
             <a href="<%= keywordUrl1 %>" class="key">
                 <img class="cir1" src="https://static.overlay-tech.com/assets/a1ab5bd5-5f41-436f-a6c6-f26315247325.png" />
@@ -88,10 +97,6 @@
             </a>
         </div>
 
-
-        <div class="title">
-            <p><%= title %></p>
-        </div>
     </div>
 </body>
 
