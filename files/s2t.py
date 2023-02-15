@@ -87,7 +87,7 @@ result = pickle.load(f)
 paragraph = Paragraph(result['text'])
 # print('###################################################################################################')
 # print(paragraph.text)
-json_dict = {'keywords': ['ディベート大会', 'Webアプリ', 'イブ委員'], 'text': paragraph.text, 'date': '2023-02-15'}
+json_dict = {'keyword': ['ディベート大会', 'Webアプリ', 'イブ委員'], 'text': paragraph.text, 'date': '2023-02-15'}
 json_str = json.dumps(json_dict, ensure_ascii=False)
 print(json_str)
 

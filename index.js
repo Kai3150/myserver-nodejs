@@ -1,31 +1,26 @@
+require('dotenv').config();
 const express = require("express");
+const { PythonShell } = require('python-shell');
+const mysql = require('mysql2');
+// const multer = require('multer')"upload.css"
+
 const app  = express();
 const port = 3000;
-require('dotenv').config();
-
-const multer = require('multer')
-const {PythonShell} = require('python-shell');
-const mysql = require('mysql2');
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
-
-app.use(bodyParser.json())
-const date1 = new Date();
-const date3 = date1.getFullYear()  +
-				("00" + (date1.getMonth() + 1)).slice(-2)  +
-				("00" + (date1.getDate())).slice(-2);
-
-const upload = multer({destination: 'files/'}, {filename: date3})
-
-
-// POSTのクエリ―を良い感じに処理する
-app.use(express.urlencoded({extended: true}));
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(`${__dirname}/public`));
 app.use(express.static(`${__dirname}/public/files`));
 app.use(express.static(`${__dirname}/public/js`));
 app.use(express.static(`${__dirname}/public/css`));
+
+const date1 = new Date();
+const date3 = date1.getFullYear() +
+  ("00" + (date1.getMonth() + 1)).slice(-2) +
+  ("00" + (date1.getDate())).slice(-2);
+
+// const upload = multer({destination: 'files/'}, {filename: date3})
 
 app.get("/", (req, res) =>{
   const query = 'select distinct id, date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph where date = (select max(date) from paragraph)'
@@ -50,16 +45,6 @@ app.get("/", (req, res) =>{
   });
 });
 
-app.get("/:file", (req, res) =>{
-  const file = req.params.file;
-  console.log(file);
-  res.sendFile(`${__dirname}/public/${file}`);
-});
-app.get(":file", (req, res) => {
-  const file = req.params.file;
-  console.log(file);
-  res.sendFile(`${__dirname}/public/${file}`);
-});
 
 //json リクエストのapi
 app.get("/public/gijiroku", (req, res) =>{
@@ -78,18 +63,6 @@ app.get("/public/query", (req, res) => {
     res.json(results)
   });
 });
-
-app.post('/keyword', function (req, res) {
-  console.log(req.body.date);
-  const query = `select distinct id, keywords from paragraph where date = "${req.body.date}"`
-  con.query(query, function (err, results, fields) {
-    if (err) { console.log('err: ' + err); }
-    let kw1 = results[0].keywords.split(',')
-    console.log(kw1[0])
-    res.json(results)
-  });
-});
-
 
 app.get("/public/datehtml", (req, res) => {
   const query = 'select distinct id, date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph where date = (select max(date) from paragraph)'
@@ -164,51 +137,51 @@ app.get("/public/detailhtml", (req, res) => {
 });
 
 //client to database post
-app.post('/insert', upload.single('file'), function (req, res) {
-  const pyshell = new PythonShell('files/sample.py');
-  pyshell.on('message', function (data) {
-    const json = JSON.parse(data);
-    //send date to database
-    for (var i = 1; i < json.length; i++) {
-      const prg = json[i];
-      const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + prg["keyword"] + "','" + prg["text"] + "','" + "宮崎ゼミ" + "','" + "2009-08-03" + "')";
-      con.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log("1 record inserted");
-      });
-    }
-  });
-});
+// app.post('/insert', upload.single('file'), function (req, res) {
+//   const pyshell = new PythonShell('files/sample.py');
+//   pyshell.on('message', function (data) {
+//     const json = JSON.parse(data);
+//     //send date to database
+//     for (var i = 1; i < json.length; i++) {
+//       const prg = json[i];
+//       const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + prg["keyword"] + "','" + prg["text"] + "','" + "宮崎ゼミ" + "','" + "2009-08-03" + "')";
+//       con.query(sql, function (err, result) {
+//         if (err) throw err;
+//         console.log("1 record inserted");
+//       });
+//     }
+//   });
+// });
 
-app.post('/insert2', upload.single('file'), function (req, res) {
+app.get('/insert', function (req, res) {
+  console.log('gpgpgpgp');
   const pyshell = new PythonShell('files/s2t.py');
   pyshell.on('message', function (data) {
     const json = JSON.parse(data);
     //send date to database
+    console.log(json);
+    console.log(json['keyword']);
     const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + json["keyword"] + "','" + json["text"] + "','" + "宮崎ゼミ" + "','" + json['date'] + "')";
+
     // con.query(sql, function (err, result) {
     //   if (err) throw err;
     //   console.log("1 record inserted");
     // });
+    res.send('cocococococooco')
+    //res.sendFile(`${__dirname}/public/upload.html`);
   });
 });
 
-app.post('/upload', upload.single('file'), function(req, res) {
-  res.sendFile(`${__dirname}/public/upload.html`);
-})
+// app.post('/upload', function(req, res) {
+//   res.sendFile(`${__dirname}/public/upload.html`);
+// })
 
 // HTTPサーバを起動する
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`);
 });
 
-//データベースとの接続
-// const con = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "010832",
-//   database: "gijiroku"
-// });
+
 const con = mysql.createConnection({
   host: "localhost",
   user: process.env.SQL_USER_NAME,
@@ -219,3 +192,6 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
+
+const pyshell = new PythonShell('files/s2t.py');
+console.log(pyshell);

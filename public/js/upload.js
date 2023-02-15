@@ -19,18 +19,10 @@ fileArea.addEventListener('dragleave', function(e){
 fileArea.addEventListener('drop', function(e){
     e.preventDefault();
     fileArea.classList.remove('dragover');
-
     // ドロップしたファイルの取得
-    var files = e.dataTransfer.files;
-
+    const files = e.dataTransfer.files;
     // 取得したファイルをinput[type=file]へ
     fileInput.files = files;
-
-    if(typeof files[0] !== 'undefined') {
-        //ファイルが正常に受け取れた際の処理
-    } else {
-        //ファイルが受け取れなかった際の処理
-    }
 });
 
 
@@ -47,11 +39,13 @@ fileInput.addEventListener('change', function(e){
         //     method: 'POST',
         //     body: fd
         // })
-        fetch("http://localhost:3000/insert2", {
-            method: 'POST'
-        })
-            .then(res => console.log(res.text))
-    } else {
-        // ファイルが受け取れなかった際の処理
     }
 }, false);
+
+async function insert() {
+    console.log('clicked');
+    await fetch("http://localhost:3000/insert")
+        .then(res => console.log(res.text));
+    console.log('success inserted');
+
+}
