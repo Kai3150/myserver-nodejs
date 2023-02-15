@@ -32,7 +32,7 @@ app.get("/", (req, res) =>{
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     console.log(results)
-    res.render("date.ejs",
+    res.render("date(kato).ejs",
       {
         keywordUrl1: `public/keywordhtml?date=${results[0].date}`,
         keywordUrl2: `public/keywordhtml?date=${results[0].date}`,
@@ -96,7 +96,7 @@ app.get("/public/datehtml", (req, res) => {
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     console.log(results)
-    res.render("date.ejs",
+    res.render("date(kato).ejs",
       {
         keywordUrl1: `keywordhtml?date=${results[0].date}`,
         keywordUrl2: `keywordhtml?date=${results[0].date}`,

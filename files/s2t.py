@@ -23,9 +23,13 @@ class Paragraph:
         self.text_clenging()
         self.summarize()
         #self.gpt_summerize()
+        #self.gpt_extract()
 
     def gpt_summerize(self):
         openai.api_key = os.environ['OPENAI_API_KEY']
+
+        prompt = "Summarize the sentences below in bullet point format in Japanese." + "\n" + self.text
+
         model = 'text-davinci-003'
         print(len(self.text))
         if len(self.text) > 1300:
@@ -33,9 +37,26 @@ class Paragraph:
             pass
         else:
             with open('response.pickle', 'wb') as f:
-                response = openai.Completion.create(model=model, prompt=self.text, max_tokens=500)
+                response = openai.Completion.create(model=model, prompt=prompt, max_tokens=500)
                 self.text = response['choices'][0]['text']
                 pickle.dump(response, f)
+
+    def gpt_extract(self):
+        openai.api_key = os.environ['OPENAI_API_KEY']
+
+        prompt = "次の文章から重要なキーワードを３つ抽出してください。" + "\n" + self.text
+
+        model = 'text-davinci-003'
+        print(len(self.text))
+        if len(self.text) > 1300:
+            #too long prompt
+            pass
+        else:
+            with open('response.pickle', 'wb') as f:#同じファイルでええやろか
+                response = openai.Completion.create(model=model, prompt=prompt, max_tokens=500)
+                self.keyword = response['choices'][0]['text']#ここはどう変えたらえんやろか
+                pickle.dump(response, f)
+
 
     def text_clenging(self):
         self.text = re.sub(' ', '、', self.text)  # 空白削除
