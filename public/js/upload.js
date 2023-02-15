@@ -47,14 +47,11 @@ fileInput.addEventListener('change', function(e){
         //     method: 'POST',
         //     body: fd
         // })
-        fetch("http://localhost:3000/insert", {
+        fetch("http://localhost:3000/insert2", {
             method: 'POST'
         })
             .then(res => console.log(res.text))
     } else {
-
         // ファイルが受け取れなかった際の処理
     }
-
 }, false);
-
