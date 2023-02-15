@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const { PythonShell } = require('python-shell');
 const mysql = require('mysql2');
+const request = require('request');
 // const multer = require('multer')"upload.css"
 
 const app  = express();
@@ -154,21 +155,18 @@ app.get("/public/detailhtml", (req, res) => {
 // });
 
 app.get('/insert', function (req, res) {
-  console.log('gpgpgpgp');
-  const pyshell = new PythonShell('files/s2t.py');
-  pyshell.on('message', function (data) {
-    const json = JSON.parse(data);
-    //send date to database
-    console.log(json);
-    console.log(json['keyword']);
-    const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + json["keyword"] + "','" + json["text"] + "','" + "宮崎ゼミ" + "','" + json['date'] + "')";
-
-    // con.query(sql, function (err, result) {
-    //   if (err) throw err;
-    //   console.log("1 record inserted");
-    // });
-    res.send('cocococococooco')
-    //res.sendFile(`${__dirname}/public/upload.html`);
+  var URL = 'http://127.0.0.1:8000/s2t';
+  request.get({
+    uri: URL,
+    headers: { 'Content-type': 'application/json' },
+    json: true
+  }, function (err, req, data) {
+    console.log(data['keyword']);
+    const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + data["keyword"] + "','" + data["text"] + "','" + "宮崎ゼミ" + "','" + data['date'] + "')";
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("1 record inserted");
+    });
   });
 });
 
@@ -192,6 +190,3 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
-
-const pyshell = new PythonShell('files/s2t.py');
-console.log(pyshell);
