@@ -51,17 +51,17 @@
 
             <%let tmp %>
             <% for (let k=0; k < results.length ; k++) { %>
-                <div class="cir-<%=k+1 %> circle">
+                <div class="circle">
                     <a href="/public/keywordhtml?date=<%=results[k].date %>" class="key">
-                        <img class="cir<%=k+1 %>" src="https://static.overlay-tech.com/assets/a1ab5bd5-5f41-436f-a6c6-f26315247325.png" />
-                        <p class="num<%=k+1 %>"><%= results[0].japanesedate %></p>
+                        <img class="cir<%=k %>" src="https://static.overlay-tech.com/assets/a1ab5bd5-5f41-436f-a6c6-f26315247325.png" />
+                        <p class="num<%=k %>"><%= results[k].japanesedate %></p>
                     </a>
                 </div>
                 <% tmp=k %>
             <% } %>
-            <% for (let k=tmp+1; k < 5-tmp ; k++) { %>
-                <div class="cir-<%=k+1 %> circle">
-                    <img class="cir<%=k+1 %>" src="https://static.overlay-tech.com/assets/a1ab5bd5-5f41-436f-a6c6-f26315247325.png" />
+            <% for (tmp; tmp < 4 ; tmp++) { %>
+                <div class="circle">
+                    <img class="cir<%=tmp%>" src="https://static.overlay-tech.com/assets/a1ab5bd5-5f41-436f-a6c6-f26315247325.png" />
                 </div>
             <% } %>
 

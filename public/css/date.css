@@ -20,6 +20,8 @@ body {
     justify-content: space-around;
     background: #D9D9D9;
     font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+    font-weight: 600;
 }
 
 .flex-wrapper-one > a {
@@ -70,7 +72,7 @@ body {
     height: fit-content;
 }
 
-.cir1{
+.cir0{
     box-sizing: border-box;
 
 position: absolute;
@@ -86,11 +88,11 @@ z-index: 2;
 cursor: pointer;
 transition: all .3s;
 }
-.cir1:hover {
+.cir0:hover {
     top:49%;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
-.num1{
+.num0{
     position: absolute;
     width: 12%;
     height: 5%;
@@ -102,11 +104,11 @@ transition: all .3s;
     color: #011C40;
     transition: all .3s;
 }
-.num1:hover {
+.num0:hover {
     top:61.5%;
 }
 
-.cir2{
+.cir1{
     box-sizing: border-box;
 
 position: absolute;
@@ -122,11 +124,11 @@ z-index: 1;
 cursor: pointer;
 transition: all .3s;
 }
-.cir2:hover {
+.cir1:hover {
     top:36%;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
-.num2{
+.num1{
     position: absolute;
     width: 12%;
     height: 5%;
@@ -138,8 +140,44 @@ transition: all .3s;
     color: #011C40;
     transition: all .3s;
 }
-.num2:hover {
+.num1:hover {
     top:47%;
+}
+
+.cir2{
+    box-sizing: border-box;
+
+position: absolute;
+width: 14%;
+height: 28%;
+left: 52%;
+top: 17%;
+
+background: #D9D9D9;
+border: 1px solid #000000;
+border-radius: 50%;
+z-index: 0;
+cursor: pointer;
+transition: all .3s;
+}
+.cir2:hover {
+    top:16%;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+.num2{
+    position: absolute;
+    width: 12%;
+    height: 5%;
+    left: 57%;
+    top: 26%;
+    margin: 0%;
+    z-index: 3;
+    font-size: 140%;
+    color: #011C40;
+    transition: all .3s;
+}
+.num2:hover {
+    top:25%;
 }
 
 .cir3{
@@ -148,7 +186,7 @@ transition: all .3s;
 position: absolute;
 width: 14%;
 height: 28%;
-left: 52%;
+left: 38%;
 top: 17%;
 
 background: #D9D9D9;
@@ -166,7 +204,7 @@ transition: all .3s;
     position: absolute;
     width: 12%;
     height: 5%;
-    left: 57%;
+    left: 43%;
     top: 26%;
     margin: 0%;
     z-index: 3;
@@ -178,44 +216,8 @@ transition: all .3s;
     top:25%;
 }
 
+
 .cir4{
-    box-sizing: border-box;
-
-position: absolute;
-width: 14%;
-height: 28%;
-left: 38%;
-top: 17%;
-
-background: #D9D9D9;
-border: 1px solid #000000;
-border-radius: 50%;
-z-index: 0;
-cursor: pointer;
-transition: all .3s;
-}
-.cir4:hover {
-    top:16%;
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
-}
-.num4{
-    position: absolute;
-    width: 12%;
-    height: 5%;
-    left: 43%;
-    top: 26%;
-    margin: 0%;
-    z-index: 3;
-    font-size: 140%;
-    color: #011C40;
-    transition: all .3s;
-}
-.num4:hover {
-    top:25%;
-}
-
-
-.cir5{
     box-sizing: border-box;
 
 position: absolute;
@@ -231,11 +233,11 @@ z-index: 1;
 cursor: pointer;
 transition: all .3s;
 }
-.cir5:hover {
+.cir4:hover {
     top:36%;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
-.num5{
+.num4{
     position: absolute;
     width: 12%;
     height: 5%;
@@ -247,6 +249,6 @@ transition: all .3s;
     color: #011C40;
     transition: all .3s;
 }
-.num5:hover {
+.num4:hover {
     top:47%;
 }
