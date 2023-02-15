@@ -12,6 +12,7 @@
         <!-- フォント -->
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     </head>
 
     <body>
@@ -56,23 +57,30 @@
         <div id="sa">
           <div id="keywords">
               <%let tmp %>
-              <% for (let k=0; k < results.length ; k++) { %>
-                <div class="c<%=k+1 %>">
-                  <a href="detailhtml?id=<%= results[k].id %>" class="detail">
-                    <img class="cir<%=k+1 %>" src="https://static.overlay-tech.com/assets/d2e75451-1aaa-4848-a3f7-50da3f65d965.png" />
-                    <% keywords = results[k].keywords.split(',') %>
-                    <% for (let i=0; i < keywords.length ; i++) { %>
-                      <p class="kw1<%= i + 1%>"><%= keywords[i] %></p>
-                    <% } %>
-                  </a>
-                </div>
-                <% tmp = k %>
+              <% if (results.length > 4) { %>
+                <% length=4 %>
+              <% } else {%>
+                <% length=results.length %>
+              <% } %>
+              <% for (let k=0; k < length ; k++) { %>
+                <a href="detailhtml?id=<%= results[k].date %>" class="detail">
+                  <img class="cir<%=k %>" src="https://static.overlay-tech.com/assets/d2e75451-1aaa-4848-a3f7-50da3f65d965.png" />
+                  <% keywords = results[k].keywords.split(',') %>
+
+                        <% if (keywords.length> 3) { %>
+                          <% length2=3 %>
+                        <% } else {%>
+                          <% length2=keywords.length %>
+                        <% } %>
+                  <% for (let i=0; i < length2 ; i++) { %>
+                    <p class="kw<%=k%><%=i%>"><%= keywords[i] %></p>
+                  <% } %>
+                </a>
+                <% tmp=k%>
               <% } %>
 
-              <% for (let k=tmp+1; k < 4-tmp ; k++) { %>
-                <div class="c<%=k+1 %>">
-                  <img class="cir<%=k+1 %>" src="https://static.overlay-tech.com/assets/d2e75451-1aaa-4848-a3f7-50da3f65d965.png" />
-                </div>
+              <% for (tmp; tmp < 4 ; tmp++) { %>
+                  <img class="cir<%=tmp %>" src="https://static.overlay-tech.com/assets/d2e75451-1aaa-4848-a3f7-50da3f65d965.png" />
               <% } %>
           </div>
         </div>

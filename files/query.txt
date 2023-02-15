@@ -1,5 +1,7 @@
 ＜最新の日付をセレクトするクエリ＞
 select distinct date, name from paragraph where date = (select max(date) from paragraph);
+select distinct id, date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph where date = (select * from paragraph order by date desc limit 5)
+select distinct id, date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 5
 
 ＜insert後の重複を改善するクエリ＞
 insert into paragraph (keyword, cnotent, name, date)
