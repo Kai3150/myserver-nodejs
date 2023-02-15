@@ -1,97 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/date.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Date of meeting</title>
+        <!-- リセットCSS -->
+        <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
+        <!-- スタイルCSS -->
+        <link rel="stylesheet" href="/date.css">
+        <!-- フォントのリンク -->
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap" rel="stylesheet">
+    </head>
 
-<body>
-    <div class="haikei">
+    <body>
+        <!-- navi -->
         <div class="flex-wrapper-one">
-            <a href="/public/datehtml">
-                <div class="icon">
-                    <img alt="" class="homei" src="https://static.overlay-tech.com/assets/28c74ab9-3a4b-47ba-96d5-cccb59e25b90.png" />
-                    <p class="home">HOME</p>
-                </div>
-            </a>
 
-            <a href="/comment.html">
-                <div class="icon">
-                    <img alt="" class="commenti" src="https://static.overlay-tech.com/assets/9577c39e-9967-4125-bd3a-09c0f69d49eb.svg" />
-                    <p class="comment">COMMENT</p>
-                </div>
+            <a href="/public/datehtml" class="icon">
+                <img alt="" class="homei" src="https://static.overlay-tech.com/assets/28c74ab9-3a4b-47ba-96d5-cccb59e25b90.png" />
+                <p class="home">HOME</p>
             </a>
-
-            <a href="/search.html">
-                <div class="icon">
-                    <img alt="" class="searchi" src="https://static.overlay-tech.com/assets/b0a2f06d-0988-4432-836e-fb58664d7ee4.svg" />
-                    <p class="search">SEARCH</p>
-                </div>
+            <a href="/comment.html" class="icon">
+                <img alt="" class="commenti" src="https://static.overlay-tech.com/assets/9577c39e-9967-4125-bd3a-09c0f69d49eb.svg" />
+                <p class="comment">COMMENT</p>
             </a>
-
-            <a href="/upload.html">
-                <div class="icon">
-                    <img alt="" class="uploadi" src="https://static.overlay-tech.com/assets/2cac0365-75fe-4eee-a30d-c732f6b6641b.svg" />
-                    <p class="upload">UPLOAD</p>
-                </div>
+            <a href="/search.html" class="icon">
+                <img alt="" class="searchi" src="https://static.overlay-tech.com/assets/b0a2f06d-0988-4432-836e-fb58664d7ee4.svg" />
+                <p class="search">SEARCH</p>
             </a>
-
-            <a href="/setting.html">
-                <div class="icon">
-                    <img alt="" class="settingi" src="https://static.overlay-tech.com/assets/28ea5c18-b9c0-45fe-a8b9-59fe9b4ae169.svg" />
-                    <p class="setting">SETTING</p>
-                </div>
+            <a href="/upload.html" class="icon">
+                <img alt="" class="uploadi" src="https://static.overlay-tech.com/assets/2cac0365-75fe-4eee-a30d-c732f6b6641b.svg" />
+                <p class="upload">UPLOAD</p>
+            </a>
+            <a href="/setting.html" class="icon">
+                <img alt="" class="settingi" src="https://static.overlay-tech.com/assets/28ea5c18-b9c0-45fe-a8b9-59fe9b4ae169.svg" />
+                <p class="setting">SETTING</p>
             </a>
         </div>
 
+        <!-- title&date -->
         <div class="flex-wrapper-two">
-
-            <div class="cir-1">
-                <a href="<%= keywordUrl1 %>" class="key">
-                    <img class="cir1" src="https://static.overlay-tech.com/assets/a1ab5bd5-5f41-436f-a6c6-f26315247325.png" />
-                    <p class="num1"><%= date1 %></p>
-                </a>
-            </div>
-
-
-            <div class="cir-2">
-                <a href="<%= keywordUrl2 %>" class="key">
-                    <img class="cir2" src="https://static.overlay-tech.com/assets/164285e6-fc79-48a3-ace1-bb7c179734d2.png" />
-                    <p class="num2"><%= date2 %></p>
-                </a>
-            </div>
-
-            <div class="cir-3">
-                <a href="<%= keywordUrl3 %>" class="key">
-                    <img class="cir3" src="https://static.overlay-tech.com/assets/e99b088c-01ef-4796-89ac-e606b81ab2bc.png" />
-                    <p class="num3"><%= date3 %></p>
-                </a>
-            </div>
-
-            <div class="cir-4">
-                <a href="<%= keywordUrl4 %>" class="key">
-                    <img class="cir4" src="https://static.overlay-tech.com/assets/8593cbbd-8240-4318-8c89-8c84c92e8758.png" />
-                    <p class="num4"><%= date4 %></p>
-                </a>
-            </div>
-
-            <div class="cir-5">
-                <a href="<%= keywordUrl5 %>" class="key">
-                    <img class="cir5" src="https://static.overlay-tech.com/assets/30f94432-5497-4167-8bf4-d22c3cb547f5.png" />
-                    <p class="num5"><%= date5 %></p>
-                </a>
-            </div>
-
-
             <div class="title">
-                <p><%= title %></p>
+                <%= results[0].name %>
             </div>
-        </div>
-    </div>
-</body>
 
+            <%let tmp %>
+            <% for (let k=0; k < results.length ; k++) { %>
+                <div class="cir-<%=k+1 %> circle">
+                    <a href="/public/keywordhtml?date=<%=results[k].date %>" class="key">
+                        <img class="cir<%=k+1 %>" src="https://static.overlay-tech.com/assets/a1ab5bd5-5f41-436f-a6c6-f26315247325.png" />
+                        <p class="num<%=k+1 %>"><%= results[0].japanesedate %></p>
+                    </a>
+                </div>
+                <% tmp=k %>
+            <% } %>
+            <% for (let k=tmp+1; k < 5-tmp ; k++) { %>
+                <div class="cir-<%=k+1 %> circle">
+                    <img class="cir<%=k+1 %>" src="https://static.overlay-tech.com/assets/a1ab5bd5-5f41-436f-a6c6-f26315247325.png" />
+                </div>
+            <% } %>
+
+        </div>
+    </body>
 </html>

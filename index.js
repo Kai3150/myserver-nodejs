@@ -28,19 +28,9 @@ app.get("/", (req, res) =>{
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     console.log(results)
-    res.render("date(kato).ejs",
+    res.render("date.ejs",
       {
-        keywordUrl1: `public/keywordhtml?date=${results[0].date}`,
-        keywordUrl2: `public/keywordhtml?date=${results[0].date}`,
-        keywordUrl3: `public/keywordhtml?date=${results[0].date}`,
-        keywordUrl4: `public/keywordhtml?date=${results[0].date}`,
-        keywordUrl5: `public/keywordhtml?date=${results[0].date}`,
-        title: results[0].name,
-        date1: results[0].japanesedate,
-        date2: results[0].japanesedate,
-        date3: results[0].japanesedate,
-        date4: results[0].japanesedate,
-        date5: results[0].japanesedate
+        results: results,
       }
     );
   });
@@ -70,19 +60,9 @@ app.get("/public/datehtml", (req, res) => {
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     console.log(results)
-    res.render("date(kato).ejs",
+    res.render("date.ejs",
       {
-        keywordUrl1: `keywordhtml?date=${results[0].date}`,
-        keywordUrl2: `keywordhtml?date=${results[0].date}`,
-        keywordUrl3: `keywordhtml?date=${results[0].date}`,
-        keywordUrl4: `keywordhtml?date=${results[0].date}`,
-        keywordUrl5: `keywordhtml?date=${results[0].date}`,
-        title: results[0].name,
-        date1: results[0].japanesedate,
-        date2: results[0].japanesedate,
-        date3: results[0].japanesedate,
-        date4: results[0].japanesedate,
-        date5: results[0].japanesedate
+        results: results,
       }
     );
   });
@@ -90,32 +70,13 @@ app.get("/public/datehtml", (req, res) => {
 
 app.get("/public/keywordhtml", (req, res) => {
   console.log(req.query.date);
-  const query = `select distinct id, keywords from paragraph where date = "${req.query.date}"`
+  const query = `select distinct id, keywords, date_format(date, "%c月%e日") as date from paragraph where date = "${req.query.date}"`
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
-    console.log(query)
-    let kw1 = results[0].keywords.split(',')
-    let kw2 = results[1].keywords.split(',')
-    let kw3 = results[2].keywords.split(',')
-    let kw4 = results[3].keywords.split(',')
+    console.log(results)
     res.render("keyword.ejs",
       {
-        detailUrl1: `detailhtml?id=${results[0].id}`,
-        detailUrl2: `detailhtml?id=${results[1].id}`,
-        detailUrl3: `detailhtml?id=${results[2].id}`,
-        detailUrl4: `detailhtml?id=${results[3].id}`,
-        kw11: `${kw1[0]}`,
-        kw12: `${kw1[1]}`,
-        kw13: `${kw1[2]}`,
-        kw21: `${kw2[0]}`,
-        kw22: `${kw2[1]}`,
-        kw23: `${kw2[2]}`,
-        kw31: `${kw3[0]}`,
-        kw32: `${kw3[1]}`,
-        kw33: `${kw3[2]}`,
-        kw41: `${kw4[0]}`,
-        kw42: `${kw4[1]}`,
-        kw43: `${kw4[2]}`,
+        results: results
       }
     );
   });
