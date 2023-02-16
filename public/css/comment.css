@@ -142,10 +142,10 @@ color: rgb(50, 49, 49);
 
 .title{
     position: fixed;
-width: 50%;
 height: 40%;
 left: 50%;
 top: 5%;
+transform: translateX(-50%);
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -169,6 +169,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 18px;
 line-height: 23px;
+z-index: 2;
 
 color: #8E8E8E;
 }
@@ -191,8 +192,6 @@ width: 66px;
 height: 61px;
 left: 139px;
 top: 65px;
-
-background: url(FfM3zSKUAAYtwLH.jpg);
 border-radius: 90px;
 }
 
@@ -251,8 +250,6 @@ width: 62px;
 height: 60px;
 left: 226px;
 top: 190px;
-
-background: url(image.png);
 border-radius: 90px;
 }
 
@@ -355,4 +352,3 @@ color: #CE3487;
 .comment{
     position: absolute;
 }
-

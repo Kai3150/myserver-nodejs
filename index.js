@@ -89,13 +89,33 @@ app.get("/public/detailhtml", (req, res) => {
     if (err) { console.log('err: ' + err); }
     const keywords = results[0].keywords;
     const content = results[0].content.replace(/\n/g, '<br>')
+    const id = results[0].id
 
-    console.log(content)
+    console.log(id)
 
     res.render("detail.ejs", {
       keywords: keywords,
-      content: content
+      content: content,
+      id: id
      }
+    );
+  });
+});
+
+app.get("/public/commenthtml", (req, res) => {
+  console.log(req.query.id);
+  const query = `select distinct id, keywords, content from paragraph where id = "${req.query.id}"`
+  con.query(query, function (err, results, fields) {
+    if (err) { console.log('err: ' + err); }
+    const keywords = results[0].keywords;
+    const content = results[0].content.replace(/\n/g, '<br>')
+
+    console.log(content)
+
+    res.render("comment.ejs", {
+      keywords: keywords,
+      // content: content,
+    }
     );
   });
 });
@@ -132,6 +152,7 @@ app.get('/insert', function (req, res) {
       console.log("1 record inserted");
     });
   });
+
 });
 
 // app.post('/upload', function(req, res) {
