@@ -8,6 +8,8 @@ body {
     background: linear-gradient(180deg, #1A3266 0%, rgba(10, 12, 19, 0.62) 100%);
     background-size: cover;
     background-attachment: fixed;
+    overflow: hidden;
+    margin: 0;
 }
 
 /* navi ------------------------------------------- */
@@ -15,7 +17,7 @@ body {
     position: fixed;
     width: fit-content;
     height: 100%;
-    padding: 0 3px 0;
+    padding: 0 10px 0;
     display:flex;
     flex-flow: column;
     align-items: center;
@@ -51,17 +53,16 @@ body {
     align-items: center;
     margin-left: 5%;
     height: 100%;
+    font-family: 'Noto Serif JP', serif;
 }
 
 /* 日付 ---------------------------------------------- */
 .day{
-    height: 60px;
 
     font-family: 'Noto Serif JP';
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
-    line-height: 57px;
     margin: 5% auto 5%;
 
     color: #D9D9D9;
@@ -71,10 +72,14 @@ body {
 /* 戻るボタン--------------------------------------- */
 .return{
     position: absolute;
-    width: 39px;
-    height: 39px;
-    left: 20%;
-    top: 15%;
+    width: 59px;
+    height: 59px;
+    left: 15%;
+    top: 25%;
+    opacity: 1;
+}
+.return:hover {
+    opacity: 0.5;
 }
 
 /* circle ----------------------------------------- */
@@ -84,12 +89,18 @@ body {
     position: absolute;
     width: 186.08px;
     height: 185px;
-    left: 567px;
-    top: 120px;
+    left: 46%;
+    top: 20%;
 
     background: #D9D9D9;
     border: 1px solid #000000;
     border-radius: 50%;
+transition: all .3s;
+}
+
+.cir0:hover {
+    top: 19%;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .cir1{
@@ -98,12 +109,18 @@ body {
 position: absolute;
 width: 186.08px;
 height: 185px;
-left: 728px;
-top: 255px;
+left: 62%;
+top: 43%;
 
 background: #D9D9D9;
 border: 1px solid #000000;
 border-radius: 50%;
+transition: all .3s;
+}
+
+.cir1:hover {
+    top: 42%;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .cir2{
@@ -112,12 +129,18 @@ border-radius: 50%;
 position: absolute;
 width: 186.08px;
 height: 185px;
-left: 567px;
-top: 395px;
+left: 46%;
+top: 68%;
 
 background: #D9D9D9;
 border: 1px solid #000000;
 border-radius: 50%;
+transition: all .3s;
+}
+
+.cir2:hover {
+    top: 67%;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .cir3{
@@ -126,39 +149,33 @@ border-radius: 50%;
 position: absolute;
 width: 186.08px;
 height: 185px;
-left: 406px;
-top: 257px;
+left: 30%;
+top: 43%;
 
 background: #D9D9D9;
 border: 1px solid #000000;
 border-radius: 50%;
+transition: all .3s;
+}
+
+.cir3:hover {
+    top: 42%;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 
-
-.time-cir{
-    position: absolute;
-width: 6px;
-height: 6px;
-left: 657px;
-top: 350px;
-z-index: 1;
-border-radius: 50%;
-
-background: #0C0B0B;
-}
-
+/* time */
 .arrow1{
     box-sizing: border-box;
 
     position: absolute;
-    width: 22px;
+    width: 40px;
     height: 0px;
-    left: 650px;
-    top: 340px;
+    left: 50%;
+    top: 53%;
     z-index: 2;
 
-    border: 3px solid #000000;
+    border: 4px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
     transform: rotate(-90deg);
 }
@@ -166,22 +183,22 @@ background: #0C0B0B;
     box-sizing: border-box;
 
     position: absolute;
-    width: 25px;
+    width: 40px;
     height: 0px;
-    left: 660px;
-    top: 350px;
+    left: 51%;
+    top: 55%;
     z-index: 2;
 
     border: 3px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+/* keyword ------------------------------------------------ */
 .kw00 {
     position: absolute;
-width: 83px;
 height: 21px;
-left: 610px;
-top: 137px;
+left: 48%;
+top: 24%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -191,14 +208,18 @@ line-height: 26px;
 
 color: #000000;
 
+transition: all .3s;
+}
+
+.kw00:hover {
+    top: 23%;
 }
 
 .kw01 {
     position: absolute;
-width: 83px;
 height: 21px;
-left: 679px;
-top: 173px;
+left: 49%;
+top: 29%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -208,14 +229,18 @@ line-height: 26px;
 
 color: #000000;
 
+transition: all .3s;
+}
+
+.kw01:hover {
+    top: 28%;
 }
 
 .kw02 {
     position: absolute;
-width: 83px;
 height: 21px;
-left: 615px;
-top: 198px;
+left: 48%;
+top: 34%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -225,14 +250,18 @@ line-height: 26px;
 
 color: #000000;
 
+transition: all .3s;
+}
+
+.kw02:hover {
+    top: 33%;
 }
 
 .kw10 {
     position: absolute;
-width: 83px;
 height: 21px;
-left: 793px;
-top: 275px;
+left: 64%;
+top: 47%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -242,14 +271,18 @@ line-height: 26px;
 
 color: #000000;
 
+transition: all .3s;
+}
+
+.kw10:hover {
+    top: 46%;
 }
 
 .kw11 {
     position: absolute;
-width: 83px;
 height: 21px;
-left: 764px;
-top: 310px;
+left: 65%;
+top: 52%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -259,14 +292,18 @@ line-height: 26px;
 
 color: #000000;
 
+transition: all .3s;
+}
+
+.kw11:hover {
+    top: 51%;
 }
 
 .kw12 {
     position: absolute;
-width: 83px;
 height: 21px;
-left: 823px;
-top: 332px;
+left: 64%;
+top: 57%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -277,14 +314,18 @@ line-height: 26px;
 color: #000000;
 
 
+transition: all .3s;
+}
+
+.kw12:hover {
+    top: 56%;
 }
 
 .kw20 {
     position: absolute;
-width: 83px;
 height: 21px;
-left: 610px;
-top: 410px;
+left: 48%;
+top: 73%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -295,14 +336,18 @@ line-height: 26px;
 color: #000000;
 
 
+transition: all .3s;
+}
+
+.kw20:hover {
+    top: 72%;
 }
 
 .kw21 {
     position: absolute;
-width: 123px;
 height: 28px;
-left: 636px;
-top: 440px;
+left: 49%;
+top: 78%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -312,14 +357,18 @@ line-height: 26px;
 
 color: #000000;
 
+transition: all .3s;
+}
+
+.kw21:hover {
+    top: 77%;
 }
 
 .kw22 {
     position: absolute;
-width: 132px;
 height: 28px;
-left: 589px;
-top: 472px;
+left: 48%;
+top: 83%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -329,14 +378,18 @@ line-height: 26px;
 
 color: #000000;
 
+transition: all .3s;
+}
+
+.kw22:hover {
+    top: 82%;
 }
 
 .kw30 {
     position: absolute;
-width: 132px;
 height: 28px;
-left: 471px;
-top: 275px;
+left: 32%;
+top: 47%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -346,14 +399,19 @@ line-height: 26px;
 
 color: #000000;
 
+transition: all .3s;
+}
+
+.kw30:hover {
+    top: 46%;
 }
 
 .kw31 {
     position: absolute;
 width: 132px;
 height: 28px;
-left: 442px;
-top: 310px;
+left: 33%;
+top: 52%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -363,14 +421,19 @@ line-height: 26px;
 
 color: #000000;
 
+transition: all .3s;
+}
+
+.kw31:hover {
+    top: 51%;
 }
 
 .kw32 {
     position: absolute;
 width: 132px;
 height: 28px;
-left: 501px;
-top: 332px;
+left: 32%;
+top: 57%;
 
 font-family: 'Noto Serif JP';
 font-style: normal;
@@ -380,15 +443,9 @@ line-height: 26px;
 
 color: #000000;
 
+transition: all .3s;
 }
 
-ul {
-    overflow: auto;
-    /* scroll-snap-type: y mandatory; */
-  /*   height: 100vh; */
-
-  }
-li {
-    /* scroll-snap-align: start; */
-  /*   height: 100vh; */
-  }
+.kw32:hover {
+    top: 56%;
+}

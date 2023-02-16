@@ -24,7 +24,7 @@ const date3 = date1.getFullYear() +
 // const upload = multer({destination: 'files/'}, {filename: date3})
 
 app.get("/", (req, res) =>{
-  const query = 'select distinct id, date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph where date = (select max(date) from paragraph)'
+  const query = 'select distinct date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 5'
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     console.log(results)
@@ -56,7 +56,7 @@ app.get("/public/query", (req, res) => {
 });
 
 app.get("/public/datehtml", (req, res) => {
-  const query = 'select distinct id, date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 5'
+  const query = 'select distinct date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 5'
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     console.log(results)
@@ -88,7 +88,9 @@ app.get("/public/detailhtml", (req, res) => {
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     const keywords = results[0].keywords;
-    const content = results[0].content;
+    const content = results[0].content.replace(/\n/g, '<br>')
+
+    console.log(content)
 
     res.render("detail.ejs", {
       keywords: keywords,

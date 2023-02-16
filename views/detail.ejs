@@ -11,6 +11,9 @@
         <link rel="stylesheet" href="/detail.css">
         <!-- フォント -->
         <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap" rel="stylesheet">
 
     </head>
 
@@ -41,6 +44,12 @@
 
         <div class="flex-wrapper-two">
 
+        <a href="javascript:history.back()">
+            <div class="num-1-1">
+                <img alt="" class="return" src="https://static.overlay-tech.com/assets/3790ab4e-eed9-48ef-b511-82875c0a3340.svg" />
+            </div>
+        </a>
+
             <!-- title -->
             <h1 class="title">
                 <%= keywords %>
@@ -48,7 +57,7 @@
 
             <!-- content -->
             <p class="text">
-                <%= content %>
+                <%-content %>
             </p>
 
         </div>

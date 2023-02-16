@@ -8,6 +8,7 @@ body {
     background: linear-gradient(180deg, #1A3266 0%, rgba(10, 12, 19, 0.62) 100%);
     background-size: cover;
     background-attachment: fixed;
+    margin: 0;
 }
 
 /* navi ------------------------------------------- */
@@ -15,7 +16,7 @@ body {
     position: fixed;
     width: fit-content;
     height: 100%;
-    padding: 0 3px 0;
+    padding: 0 10px 0;
     display:flex;
     flex-flow: column;
     align-items: center;
@@ -51,17 +52,32 @@ body {
     flex-flow: column;
     align-items: center;
     margin-left: 5%;
+    font-family: 'Noto Serif JP', serif;
+}
+
+/* 戻るボタン--------------------------------------- */
+.return {
+    position: absolute;
+    width: 59px;
+    height: 59px;
+    left: 15%;
+    top: 25%;
+    opacity: 1;
+}
+
+.return:hover {
+    opacity: 0.5;
 }
 
 /* titile ------------------------------------ */
 .title{
     height: 40%;
-    margin: 5% auto 5%;
+    margin: 5% auto 0;
 
     font-family: 'Noto Serif JP';
     font-style: normal;
     font-weight: 400;
-    font-size: 32px;
+    font-size: 37px;
     line-height: 46px;
 
     color: #D9D9D9;
@@ -74,8 +90,8 @@ body {
     font-family: 'Noto Serif JP';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
+    font-size: 23px;
+    line-height: 38px;
 
     color: #D9D9D9;
 }

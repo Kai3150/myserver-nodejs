@@ -175,9 +175,10 @@ color: rgb(50, 49, 49);
     left: 0;
     z-index: 10;
     display: block;
-    width: 200px;
+    width: 300px;
     height: 80px;
     opacity: 0;
+    cursor: pointer;
 }
 
 #inputFileWrap {
@@ -188,14 +189,17 @@ color: rgb(50, 49, 49);
 }
 
 #btnInputFile{
-    
+
         display: table;
         width: 300px;
         top: 70%;
-        
-    
+        cursor: pointer;
+
 }
 
+.btn {
+    cursor: pointer;
+}
 
 #btnChangeFile {
     display: none;
@@ -220,6 +224,7 @@ color: rgb(50, 49, 49);
     vertical-align: middle;
     top: 50%;
 }
+
 
 #upFileWrap.selected #btnInputFile {
     display: none;
