@@ -37,15 +37,6 @@ app.get("/", (req, res) =>{
 });
 
 
-//json リクエストのapi
-app.get("/public/gijiroku", (req, res) =>{
-  const pyshell = new PythonShell('files/sample.py');
-  pyshell.on('message', function (data) {
-    let json = JSON.parse(data);
-    res.json(json);
-  });
-});
-
 //database to client request
 app.get("/public/query", (req, res) => {
   const query = 'select distinct date_format(date, "%Y-%m-%d") as date, name from paragraph where date = (select max(date) from paragraph)'
@@ -120,22 +111,7 @@ app.get("/public/commenthtml", (req, res) => {
   });
 });
 
-//client to database post
-// app.post('/insert', upload.single('file'), function (req, res) {
-//   const pyshell = new PythonShell('files/sample.py');
-//   pyshell.on('message', function (data) {
-//     const json = JSON.parse(data);
-//     //send date to database
-//     for (var i = 1; i < json.length; i++) {
-//       const prg = json[i];
-//       const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + prg["keyword"] + "','" + prg["text"] + "','" + "宮崎ゼミ" + "','" + "2009-08-03" + "')";
-//       con.query(sql, function (err, result) {
-//         if (err) throw err;
-//         console.log("1 record inserted");
-//       });
-//     }
-//   });
-// });
+
 
 app.get('/insert', function (req, res) {
   var URL = 'http://127.0.0.1:8000/parse';

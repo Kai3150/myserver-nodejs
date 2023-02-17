@@ -1,7 +1,7 @@
 from s2t import Paragraph
 import pickle
 
-f = open('output.pkl', 'rb')
+f = open('output.pickle', 'rb')
 result = pickle.load(f)
 
 text0 = result['text'][:6000]
