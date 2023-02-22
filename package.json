@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/hiroto1213/myserver-nodejs#readme",
   "dependencies": {
+    "axios": "^1.3.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",

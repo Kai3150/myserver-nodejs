@@ -50,23 +50,16 @@
 
     <input type="file" accept="video/mp4,video/mov,audio/mp3,audio/mav">
     <div id="inputFile">
-      <!-- ドラッグ&ドロップエリア -->
       <p id="dropArea">ここに動画・音声ファイルをドロップしてください<br>または</p>
-
-      <!-- 通常のinput[type=file] -->
       <div id="inputFileWrap">
-        <!-- <form action="upload" id="frm" method="post" enctype="multipart/form-data"> -->
-        <form id="frm" method="get" action="#" enctype="multipart/form-data">
-          <input type="file" name="uploadFile" id="uploadFile">
-          <div id="btnInputFile">
-            <span>ファイルを選択する</span>
-          </div>
-          <button type="button" class="btn" onclick="insert()">送信</button>
+        <form>
+          <input type="file" id="uploadFile">
+          <button type="button" id="submit-button">Submit</button>
         </form>
       </div>
     </div>
   </div>
-
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="upload.js"></script>
   </div>
   </div>

@@ -1,14 +1,21 @@
 require('dotenv').config();
 const express = require("express");
-const { PythonShell } = require('python-shell');
+const cors = require('cors');
 const mysql = require('mysql2');
 const request = require('request');
-// const multer = require('multer')"upload.css"
+const multer = require('multer');
+const axios = require('axios');
+const FormData = require('form-data');
 
 const app  = express();
 const port = 3000;
 
 app.set("view engine", "ejs");
+app.use(cors({
+  origin: '*', //アクセス許可するオリジン
+  credentials: true, //レスポンスヘッダーにAccess-Control-Allow-Credentials追加
+  optionsSuccessStatus: 200 //レスポンスstatusを200に設定
+}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(`${__dirname}/public`));
@@ -16,12 +23,9 @@ app.use(express.static(`${__dirname}/public/files`));
 app.use(express.static(`${__dirname}/public/js`));
 app.use(express.static(`${__dirname}/public/css`));
 
-const date1 = new Date();
-const date3 = date1.getFullYear() +
-  ("00" + (date1.getMonth() + 1)).slice(-2) +
-  ("00" + (date1.getDate())).slice(-2);
 
-// const upload = multer({destination: 'files/'}, {filename: date3})
+
+const upload = multer();
 
 app.get("/", (req, res) =>{
   const query = 'select distinct date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 5'
@@ -35,7 +39,6 @@ app.get("/", (req, res) =>{
     );
   });
 });
-
 
 //database to client request
 app.get("/public/query", (req, res) => {
@@ -111,8 +114,6 @@ app.get("/public/commenthtml", (req, res) => {
   });
 });
 
-
-
 app.get('/insert', function (req, res) {
   var URL = 'http://127.0.0.1:8000/parse';
   request.get({
@@ -131,9 +132,34 @@ app.get('/insert', function (req, res) {
 
 });
 
-// app.post('/upload', function(req, res) {
-//   res.sendFile(`${__dirname}/public/upload.html`);
-// })
+app.post('/upload', upload.single('audio'), async (req, res) => {
+  try {
+    const { originalname, buffer } = req.file;
+    const formData = new FormData();
+    formData.append('audio_file', buffer, { filename: originalname });
+    const response = await axios.post('http://localhost:8000/upload_audio', formData, {
+      headers: {
+        ...formData.getHeaders()
+      }
+    });
+    console.log(response);
+
+    const data = response["data"]
+    for (let index = 0; index < data.length; index++) {
+      const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + data[index]["keyword"] + "','" + data[index]["text"] + "','" + "宮崎ゼミ" + "','" + data[index]['date'] + "')";
+      con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("1 record inserted");
+      });
+
+    }
+
+    res.status(200).send(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error uploading file');
+  }
+});
 
 // HTTPサーバを起動する
 app.listen(port, () => {
