@@ -1,48 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Date of meeting</title>
-        <!-- リセットCSS -->
-        <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
         <!-- スタイルCSS -->
         <link rel="stylesheet" href="/date.css">
-        <!-- フォントのリンク -->
-        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/navigation.css">
+        <!-- WPA化 -->
+        <link rel="shortcut icon" href="/icon512.png" />
+        <link rel="manifest" href="/manifest.json">
     </head>
 
     <body>
-        <!-- navi -->
-        <div class="flex-wrapper-one">
-
-            <a href="/public/datehtml" class="icon">
-                <img alt="" class="homei" src="https://static.overlay-tech.com/assets/28c74ab9-3a4b-47ba-96d5-cccb59e25b90.png" />
-                <p class="home">HOME</p>
-            </a>
-            <a href="/comment.html" class="icon">
-                <img alt="" class="commenti" src="https://static.overlay-tech.com/assets/9577c39e-9967-4125-bd3a-09c0f69d49eb.svg" />
-                <p class="comment">COMMENT</p>
-            </a>
-            <a href="/search.html" class="icon">
-                <img alt="" class="searchi" src="https://static.overlay-tech.com/assets/b0a2f06d-0988-4432-836e-fb58664d7ee4.svg" />
-                <p class="search">SEARCH</p>
-            </a>
-            <a href="/upload.html" class="icon">
-                <img alt="" class="uploadi" src="https://static.overlay-tech.com/assets/2cac0365-75fe-4eee-a30d-c732f6b6641b.svg" />
-                <p class="upload">UPLOAD</p>
-            </a>
-            <a href="/setting.html" class="icon">
-                <img alt="" class="settingi" src="https://static.overlay-tech.com/assets/28ea5c18-b9c0-45fe-a8b9-59fe9b4ae169.svg" />
-                <p class="setting">SETTING</p>
-            </a>
-        </div>
-
+        <%- include("common/sideNav.ejs")%>
         <!-- title&date -->
         <div class="flex-wrapper-two">
             <div class="title">
@@ -66,5 +38,11 @@
             <% } %>
 
         </div>
+        <%- include("common/bottomNav.ejs")%>
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js', { scope: '/' });
+            }
+        </script>
     </body>
 </html>

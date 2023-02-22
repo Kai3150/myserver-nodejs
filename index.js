@@ -114,6 +114,19 @@ app.get("/public/commenthtml", (req, res) => {
   });
 });
 
+app.get("/public/searchhtml", (req, res) => {
+  res.render("search.ejs");
+});
+app.get("/public/search-resulthtml", (req, res) => {
+  res.render("search-result.ejs");
+});
+app.get("/public/settinghtml", (req, res) => {
+  res.render("setting.ejs");
+});
+app.get("/public/uploadhtml", (req, res) => {
+  res.render("upload.ejs");
+});
+
 app.get('/insert', function (req, res) {
   var URL = 'http://127.0.0.1:8000/parse';
   request.get({
@@ -162,7 +175,7 @@ app.post('/upload', upload.single('audio'), async (req, res) => {
 });
 
 // HTTPサーバを起動する
-app.listen(port, () => {
+app.listen(port,'192.168.11.3', () => {
   console.log(`listening at http://localhost:${port}`);
 });
 

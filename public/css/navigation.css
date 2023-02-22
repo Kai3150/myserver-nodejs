@@ -1,0 +1,92 @@
+/* all ------------------------------------------- */
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background: linear-gradient(180deg, #1a3266 0%, rgba(10, 12, 19, 0.62) 100%);
+    background-size: 150% 150%;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* ------bottom navigation bar setting--------*/
+.menu {
+    position: fixed;
+    display: flex;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    background: white;
+    width: 100%;
+}
+
+.menu li {
+    display: table;
+    float: left;
+    table-layout: fixed;
+    width: 100%;
+    padding: 5px;
+    list-style: none;
+    text-align: center;
+}
+
+.menu a span {
+    display: block;
+    font-size: 4px;
+}
+
+/* ------side navigation bar setting--------*/
+.flex-wrapper-one {
+    position: fixed;
+    width: 7%;
+    height: 100%;
+    padding: 0 10px 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+    background: #D9D9D9;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 30px;
+}
+
+.flex-wrapper-one img {
+    margin: 0 auto;
+}
+
+.flex-wrapper-one>a {
+    display: block;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-decoration: none;
+    color: #1e3858;
+}
+
+.icon {
+    opacity: 1;
+}
+
+.icon:hover {
+    opacity: 0.5;
+}
+
+
+/* PCの時下のバーを消す。 */
+@media(min-width: 768px) {
+    .bottom-menu {
+        display: none;
+    }
+}
+/* スマホの時横のバーを消す。 */
+@media(max-width: 767px) {
+    .flex-wrapper-one {
+        display: none;
+    }
+}

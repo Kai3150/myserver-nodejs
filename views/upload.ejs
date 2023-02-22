@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/upload.css">
+    <link rel="stylesheet" href="/navigation.css">
+</head>
+<body>
+    <div class="haikei">
+        <%- include("common/sideNav.ejs")%>
+        <div id="upFileWrap">
+            <input type="file" accept="video/mp4,video/mov,audio/mp3,audio/mav">
+            <div id="inputFile">
+                <p id="dropArea">ここに動画・音声ファイルをドロップしてください<br>または</p>
+                <div id="inputFileWrap">
+                    <form>
+                        <input type="file" id="uploadFile">
+                        <button type="button" id="submit-button">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/upload.js"></script>
+    <%- include("common/bottomNav.ejs")%>
+</body>
+</html>

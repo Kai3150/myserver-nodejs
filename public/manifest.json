@@ -1,0 +1,16 @@
+{
+    "name": "Patrica app",
+    "short_name": "Patrica",
+    "description": "A speech to text application that can summerize the content of speech in 3 ~ 5 lines",
+    "start_url": "/",
+    "background_color": "#2f3d58",
+    "theme_color": "#2f3d58",
+    "orientation": "any",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/icon512.png",
+            "sizes": "512x512"
+        }
+    ]
+}

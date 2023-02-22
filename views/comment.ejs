@@ -6,50 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/comment.css">
+    <link rel="stylesheet" href="/navigation.css">
+    <link rel="shortcut icon" href="/icon512.png" />
 </head>
 <body>
     <div class="haikei">
-        <div class="flex-wrapper-one">
-            <a href="/public/datehtml">
-                <div class="icon">
-                    <img alt="" class="homei" src="https://static.overlay-tech.com/assets/28c74ab9-3a4b-47ba-96d5-cccb59e25b90.png" />
-                    <p class="home">HOME</p>
-                </div>
-            </a>
-
-            <a href="/comment.html">
-                <div class="icon">
-                    <img alt="" class="commenti" src="https://static.overlay-tech.com/assets/9577c39e-9967-4125-bd3a-09c0f69d49eb.svg" />
-                    <p class="comment">COMMENT</p>
-                </div>
-            </a>
-
-            <a href="/search.html">
-                <div class="icon">
-                    <img alt="" class="searchi" src="https://static.overlay-tech.com/assets/b0a2f06d-0988-4432-836e-fb58664d7ee4.svg" />
-                    <p class="search">SEARCH</p>
-                </div>
-            </a>
-
-            <a href="/upload.html">
-                <div class="icon">
-                    <img alt="" class="uploadi" src="https://static.overlay-tech.com/assets/2cac0365-75fe-4eee-a30d-c732f6b6641b.svg" />
-                    <p class="upload">UPLOAD</p>
-                </div>
-            </a>
-
-            <a href="/setting.html">
-                <div class="icon">
-                    <img alt="" class="settingi" src="https://static.overlay-tech.com/assets/28ea5c18-b9c0-45fe-a8b9-59fe9b4ae169.svg" />
-                    <p class="setting">SETTING</p>
-                </div>
-            </a>
-
-        </div>
+        <%- include("common/sideNav.ejs")%>
         <div class="flex-wrapper-two">
-            <div class="">
-                <!-- Include here the component "" -->
-            </div>
             <div class="commentsec">
                 <p class="com1-date">1日前</p>
                 <div class="line-17"></div>
@@ -69,7 +32,7 @@
 
                 <div class="detail">
                     <p class="title"><%= keywords %></p>
-                    
+
                     <div class="rectangle-6"></div>
                     <div class="rectangle-7"></div>
                     <p class="pl">P:5 L:2</p>
@@ -77,7 +40,7 @@
 
             </div>
         </div>
-
-
+    </div>
+    <%- include("common/bottomNav.ejs")%>
 </body>
 </html>
