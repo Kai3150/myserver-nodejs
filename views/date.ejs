@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
         <title>Date of meeting</title>
         <!-- スタイルCSS -->
         <link rel="stylesheet" href="/date.css">
@@ -11,16 +11,57 @@
         <!-- WPA化 -->
         <link rel="shortcut icon" href="/icon512.png" />
         <link rel="manifest" href="/manifest.json">
+        <script src="/js/wheelnav.js-1.7.1/raphael.min.js"></script>
+        <script src="/js/wheelnav.js-1.7.1/wheelnav.min.js"></script>
+        <style>
+            #wheelDiv {
+                position: absolute;
+                height: 700px;
+                width: 700px;
+                margin: auto;
+                display: table-cell;
+                vertical-align: middle;
+                top: 20%;
+            }
+            #wheelDiv>svg {
+                height: 100%;
+                width: 100%;
+            }
+
+            @media (max-width: 600px) {
+                #wheelDiv {
+                    height: 350px;
+                    width: 350px;
+                }
+            }
+
+            @media (max-width: 400px) {
+                #wheelDiv {
+                    height: 300px;
+                    width: 300px;
+                }
+            }
+        </style>
+
+        <script type="text/javascript">
+            window.onload = function () {
+                wheel = new wheelnav('wheelDiv');
+                wheel.wheelRadius = 100;
+                wheel.maxPercent = 1.6;
+                wheel.slicePathFunction = slicePath().MenuSlice;
+                const dateList = ['2月22日', '2月16日', '2月15日', '2月13日', '2月11日'];
+                console.log(dateList.length);
+                wheel.initWheel(dateList);
+                wheel.createWheel();
+            };
+        </script>
     </head>
 
     <body>
         <%- include("common/sideNav.ejs")%>
-        <!-- title&date -->
-        <div class="flex-wrapper-two">
-            <div class="title">
-                <%= results[0].name %>
-            </div>
 
+        <div class="flex-wrapper-two">
+            <div class="title"><%= results[0].name %></div>
             <%let tmp %>
             <% for (let k=0; k < results.length ; k++) { %>
                 <div class="circle">
@@ -36,10 +77,12 @@
                     <img class="cir<%=tmp%>" src="https://static.overlay-tech.com/assets/a1ab5bd5-5f41-436f-a6c6-f26315247325.png" />
                 </div>
             <% } %>
-
+                <div id="wheelDiv"></div>
         </div>
+
+
         <%- include("common/bottomNav.ejs")%>
-        <script>
+        <script type="text/javascript">
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/sw.js', { scope: '/' });
             }

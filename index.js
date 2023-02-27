@@ -2,13 +2,19 @@ require('dotenv').config();
 const express = require("express");
 const cors = require('cors');
 const mysql = require('mysql2');
-const request = require('request');
+// const request = require('request');
 const multer = require('multer');
-const axios = require('axios');
+const { request } = require('gaxios');
+//const {request} = require('http');
 const FormData = require('form-data');
 
-const app  = express();
-const port = 3000;
+const app = express();
+
+const nodeURL = 'localhost';
+const nodePort = 3000
+
+const fastApiUrl = 'http://921e-35-234-166-27.ngrok.io';
+const fastApiPort = 8000;
 
 app.set("view engine", "ejs");
 app.use(cors({
@@ -24,17 +30,19 @@ app.use(express.static(`${__dirname}/public/js`));
 app.use(express.static(`${__dirname}/public/css`));
 
 
-
 const upload = multer();
 
 app.get("/", (req, res) =>{
   const query = 'select distinct date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 5'
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
-    console.log(results)
+    console.log(results);
+    const dateList = results.map(obj => obj.japanesedate);
+    console.log(dateList);
     res.render("date.ejs",
       {
         results: results,
+        dateList: dateList,
       }
     );
   });
@@ -53,10 +61,11 @@ app.get("/public/datehtml", (req, res) => {
   const query = 'select distinct date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 5'
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
-    console.log(results)
+    const dateList = results.map(obj => obj.japanesedate);
     res.render("date.ejs",
       {
         results: results,
+        dateList: dateList,
       }
     );
   });
@@ -127,34 +136,42 @@ app.get("/public/uploadhtml", (req, res) => {
   res.render("upload.ejs");
 });
 
-app.get('/insert', function (req, res) {
-  var URL = 'http://127.0.0.1:8000/parse';
-  request.get({
-    uri: URL,
-    headers: { 'Content-type': 'application/json' },
-    json: true
-  }, function (err, req, data) {
+// app.get('/insert', function (req, res) {
+//   var URL = `${fastApiUrl}/parse`;
+//   request.get({
+//     uri: URL,
+//     headers: { 'Content-type': 'application/json' },
+//     json: true
+//   }, function (err, req, data) {
 
-    console.log(data);
-    const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + data["keyword"] + "','" + data["text"] + "','" + "宮崎ゼミ" + "','" + data['date'] + "')";
-    con.query(sql, function (err, result) {
-      if (err) throw err;
-      console.log("1 record inserted");
-    });
-  });
-
-});
+//     console.log(data);
+//     const sql = "INSERT INTO paragraph (keywords, content, name, date) VALUES ('" + data["keyword"] + "','" + data["text"] + "','" + "宮崎ゼミ" + "','" + data['date'] + "')";
+//     con.query(sql, function (err, result) {
+//       if (err) throw err;
+//       console.log("1 record inserted");
+//     });
+//   });
+// });
 
 app.post('/upload', upload.single('audio'), async (req, res) => {
+  console.log('upload start');
   try {
     const { originalname, buffer } = req.file;
     const formData = new FormData();
     formData.append('audio_file', buffer, { filename: originalname });
-    const response = await axios.post('http://localhost:8000/upload_audio', formData, {
-      headers: {
-        ...formData.getHeaders()
-      }
+    console.log({ ...formData.getHeaders() });
+    const response = await request({
+      url: `${fastApiUrl}/upload_audio`,
+      method: 'POST',
+      body: formData,
+      headers: {...formData.getHeaders()},
+      //data: formData,
+      timeout: 3600000,
     });
+
+    // const response = await axios.post(`${fastApiUrl}/upload_audio`, formData, {
+    //   headers: {...formData.getHeaders()}
+    // });
     console.log(response);
 
     const data = response["data"]
@@ -164,7 +181,6 @@ app.post('/upload', upload.single('audio'), async (req, res) => {
         if (err) throw err;
         console.log("1 record inserted");
       });
-
     }
 
     res.status(200).send(response.data);
@@ -175,10 +191,10 @@ app.post('/upload', upload.single('audio'), async (req, res) => {
 });
 
 // HTTPサーバを起動する
-app.listen(port,'192.168.11.3', () => {
-  console.log(`listening at http://localhost:${port}`);
+app.listen(nodePort, nodeURL, () => {
+  console.log(`node listening at http://${nodeURL}:${nodePort}`);
+  console.log(`fastAPI listening at ${fastApiUrl}`);
 });
-
 
 const con = mysql.createConnection({
   host: "localhost",
@@ -190,3 +206,9 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
+
+request({
+  url: `${fastApiUrl}/`,
+  headers: { 'Content-type': 'application/json' },
+  json: true
+}).then( res => console.log(res.data));

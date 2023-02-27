@@ -1,11 +1,13 @@
-from typing import Union
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, WebSocket
 import whisper
 import pickle
 app = FastAPI()
 import tempfile
 import shutil
 from s2t import Paragraph, slice_and_summerize
+from pyngrok import ngrok
+import uvicorn
+import nest_asyncio
 
 model = whisper.load_model("large")
 print('load complete')
@@ -42,6 +44,21 @@ def read_content():
 
     return json_dict
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+# # WebSocketエンドポイント
+# @app.websocket("/ws")
+# async def websocket_endpoint(websocket: WebSocket):
+#     await websocket.accept()
+#     await websocket.send_text("WebSocket接続成功")
+
+#     # 重い処理
+#     result = heavy_processing()
+
+#     # 結果をWebSocketで送信
+#     await websocket.send_text(f"処理結果: {result}")
+
+if __name__ == "__main__":
+
+    ngrok_tunnel = ngrok.connect(8000)
+    print('Public URL:', ngrok_tunnel.public_url)
+    nest_asyncio.apply()
+    uvicorn.run(app, port=8000)

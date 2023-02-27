@@ -18,7 +18,7 @@ body {
     left: 0;
     bottom: 0;
     padding: 0;
-    background: white;
+    background: linear-gradient(180deg, #fff 0%, rgba(10, 12, 19, 0) 100%);
     width: 100%;
 }
 
@@ -34,7 +34,6 @@ body {
 
 .menu a span {
     display: block;
-    font-size: 4px;
 }
 
 /* ------side navigation bar setting--------*/

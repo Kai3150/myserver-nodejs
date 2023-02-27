@@ -9,12 +9,6 @@
 }
 
 .title{
-    /* position: absolute;
-    width: 20%;
-    height: 30%;
-    left: 40%;
-    top: 0%; */
-
     font-family: 'Noto Serif JP', serif;
     font-style: normal;
     font-weight: 400;
@@ -32,19 +26,19 @@
 
 .cir0{
     box-sizing: border-box;
+    
+    position: absolute;
+    width: 20%;
+    height: 35%;
+    left: 43%;
+    top: 50%;
 
-position: absolute;
-width: 20%;
-height: 35%;
-left: 43%;
-top: 50%;
-
-background: #D9D9D9;
-border: 1px solid #000000;
-border-radius: 50%;
-z-index: 2;
-cursor: pointer;
-transition: all .3s;
+    background: #D9D9D9;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    z-index: 2;
+    cursor: pointer;
+    transition: all .3s;
 }
 .cir0:hover {
     top:49%;
