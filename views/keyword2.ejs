@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyword of contents</title>
+    <!-- スタイルCSS -->
+    <link rel="stylesheet" href="/keyword2.css" type="text/css">
+    <link rel="stylesheet" href="/navigation.css">
+    <link rel="shortcut icon" href="/icon512.png" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <%- include("common/header.ejs")%>
+    <%- include("common/sideNav.ejs")%>
+    <!-- clock & keyword -->
+    <div class="flex-wrapper-two">
+        <div class="day"><%= results[0].date %></div>
+        <% for (let k=0; k < results.length ; k++) { %>
+            <div class="card mb-3 bg-primary text-white topCard" id="<%= results[k].id %>" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom<%= k+1 %>" aria-controls="offcanvasBottom<%= k+1 %>">
+                <div class="card-header" style="display: flex; justify-content: space-around;">内容<%= k+1 %>のキーワード<span>タッチして詳細を見る</span> </div>
+                <div class="card-body">
+                    <% keywords=results[k].keywords.split(',') %>
+                    <% for (let i=0; i < keywords.length ; i++) { %>
+                        <h5 class="card-text"><%= keywords[i] %></h5>
+                    <% } %>
+                </div>
+
+                <div class="offcanvas offcanvas-bottom card bg-primary" data-bs-backdrop="false" style="height: calc(100% - 4rem - 30px - 2em); top: calc(3rem + 20px);" tabindex="-1" id="offcanvasBottom<%= k+1 %>" index="<%= results[k].id %>" aria-labelledby="offcanvasBottomLabel">
+                    <div class="offcanvas-header" style="border-bottom: #AAAAAA solid;">
+                        <h2 style="margin: auto 0;">内容<%= k+1 %></h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <h1 class="title"><%= results[k].keywords %></h1>
+                        <p class="text" style="text-align: left;"><%- results[k].content %></p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+    <script src="https://kit.fontawesome.com/b3bb9c392c.js" crossorigin="anonymous"></script>
+    <%- include("common/bottomNav.ejs")%>
+
+    <script>
+        const offcanvases = document.querySelectorAll('.offcanvas');
+    
+        const menu = document.querySelector('ul.menu');
+        menu.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+
+        offcanvases.forEach(offcanvas => {
+            const index = offcanvas.getAttribute('index')
+            const li = document.createElement('li');
+            const commentMenu = `
+                <a href="/public/commenthtml?id=${index}"><i class="fa-solid fa-comments fa-2x"></i><br>
+                    <span class="iconname">Comment</span></a>`
+
+            li.innerHTML = commentMenu;
+
+            offcanvas.addEventListener('show.bs.offcanvas', function () {
+                 menu.appendChild(li);
+            })
+
+            offcanvas.addEventListener('hide.bs.offcanvas', function () {
+                menu.removeChild(li);
+            })
+        });
+    </script>
+</body>
+</html>

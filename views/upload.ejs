@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="/navigation.css">
 </head>
 <body>
-    <div class="haikei">
-        <%- include("common/sideNav.ejs")%>
-        <div id="upFileWrap">
-            <div id="inputFile">
-                <p id="dropArea">ここに動画・音声ファイルをドロップしてください<br>または</p>
-                <div id="inputFileWrap">
-                    <form>
-                        <input type="file" id="uploadFile">
-                        <button type="button" id="submit-button">Submit</button>
-                    </form>
-                </div>
+    <%- include("common/header.ejs")%>
+    <%- include("common/sideNav.ejs")%>
+    <div id="upFileWrap">
+        <div id="inputFile">
+            <p id="dropArea">ここに動画・音声ファイルをドロップしてください<br>または</p>
+            <div id="inputFileWrap">
+                <form>
+                    <input type="file" id="uploadFile">
+                    <button type="button" id="submit-button">Submit</button>
+                </form>
             </div>
         </div>
     </div>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/upload.js"></script>
     <%- include("common/bottomNav.ejs")%>

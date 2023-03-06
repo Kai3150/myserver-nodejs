@@ -13,7 +13,7 @@ const app = express();
 const nodeURL = 'localhost';
 const nodePort = 3000
 
-const fastApiUrl = 'http://921e-35-234-166-27.ngrok.io';
+const fastApiUrl = 'http://57d3-163-44-41-16.ngrok.io';
 const fastApiPort = 8000;
 
 app.set("view engine", "ejs");
@@ -33,13 +33,13 @@ app.use(express.static(`${__dirname}/public/css`));
 const upload = multer();
 
 app.get("/", (req, res) =>{
-  const query = 'select distinct date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 5'
+  const query = 'select distinct date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 10'
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     console.log(results);
     const dateList = results.map(obj => obj.japanesedate);
     console.log(dateList);
-    res.render("date.ejs",
+    res.render("date2.ejs",
       {
         results: results,
         dateList: dateList,
@@ -48,21 +48,13 @@ app.get("/", (req, res) =>{
   });
 });
 
-//database to client request
-app.get("/public/query", (req, res) => {
-  const query = 'select distinct date_format(date, "%Y-%m-%d") as date, name from paragraph where date = (select max(date) from paragraph)'
-  con.query(query, function (err, results, fields) {
-    if (err) { console.log('err: ' + err); }
-    res.json(results)
-  });
-});
 
 app.get("/public/datehtml", (req, res) => {
-  const query = 'select distinct date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 5'
+  const query = 'select distinct date_format(date, "%Y-%m-%d") as date, date_format(date, "%c月%e日") as japanesedate, name from paragraph order by date desc limit 30'
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
     const dateList = results.map(obj => obj.japanesedate);
-    res.render("date.ejs",
+    res.render("date2.ejs",
       {
         results: results,
         dateList: dateList,
@@ -73,11 +65,14 @@ app.get("/public/datehtml", (req, res) => {
 
 app.get("/public/keywordhtml", (req, res) => {
   console.log(req.query.date);
-  const query = `select distinct id, keywords, date_format(date, "%c月%e日") as date from paragraph where date = "${req.query.date}"`
+  const query = `select distinct id, keywords, date_format(date, "%c月%e日") as date, content from paragraph where date = "${req.query.date}"`
   con.query(query, function (err, results, fields) {
     if (err) { console.log('err: ' + err); }
+    for (const item of results) {
+        item.content = item.content.replace(/\n/g, '<br>')
+    }
     console.log(results)
-    res.render("keyword.ejs",
+    res.render("keyword2.ejs",
       {
         results: results
       }
@@ -93,9 +88,6 @@ app.get("/public/detailhtml", (req, res) => {
     const keywords = results[0].keywords;
     const content = results[0].content.replace(/\n/g, '<br>')
     const id = results[0].id
-
-    console.log(id)
-
     res.render("detail.ejs", {
       keywords: keywords,
       content: content,
@@ -207,8 +199,8 @@ con.connect(function (err) {
   console.log("Connected!");
 });
 
-request({
-  url: `${fastApiUrl}/`,
-  headers: { 'Content-type': 'application/json' },
-  json: true
-}).then( res => console.log(res.data));
+// request({
+//   url: `${fastApiUrl}/`,
+//   headers: { 'Content-type': 'application/json' },
+//   json: true
+// }).then( res => console.log(res.data));

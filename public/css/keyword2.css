@@ -1,0 +1,30 @@
+.flex-wrapper-two {
+    text-align: center;
+    margin-top: calc(3rem + 20px);
+    padding-bottom: calc(2em + 10px + 1rem);
+}
+.day {
+    font-size: xxx-large;
+    font-family: serif;
+    padding: 1rem 0;
+}
+.offcanvas-body{
+    color: white;
+}
+
+/* PCの時 */
+@media(min-width: 768px) {
+    .text {
+        width: 60%;
+        font-family: 'Noto Serif JP';
+        margin: auto;
+    }
+}
+
+/* スマホの時 */
+@media(max-width: 767px) {
+    .text {
+        width: 100%;
+        font-family: 'Noto Serif JP';
+    }
+}

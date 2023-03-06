@@ -1,21 +1,44 @@
-<div class="bottom-menu">
-    <ul class="menu">
-        <li>
-            <a href="/public/datehtml"><i class="fa-solid fa-house fa-2x"></i><br>
-                <span class="iconname">Home</span></a>
-        </li>
-        <li>
-            <a href="/public/searchhtml"><i class="fa-solid fa-magnifying-glass fa-2x"></i><br>
-                <span class="iconname">Search</span></a>
-        </li>
-        <li>
-            <a href="/public/uploadhtml"><i class="fa-solid fa-circle-plus fa-2x"></i><br>
-                <span class="iconname">Upload</span></a>
-        </li>
-        <li>
-            <a href="/public/settinghtml"><i class="fa-sharp fa-solid fa-gear fa-2x"></i><br>
-                <span class="iconname">Setting</span></a>
-        </li>
-    </ul>
+<ul class="menu fixed-bottom mb-0" style="border-top: solid; z-index: 10000;">
+    <li>
+        <a href="/public/datehtml"><i class="fa-solid fa-house fa-2x"></i><br>
+            <span class="iconname">Home</span></a>
+    </li>
+    <li>
+        <a href="/public/searchhtml"><i class="fa-solid fa-magnifying-glass fa-2x"></i><br>
+            <span class="iconname">Search</span></a>
+    </li>
+    <li>
+        <a data-bs-toggle="modal" href="#exampleModal" role="button" aria-controls="exampleModal"><i class="fa-solid fa-circle-plus fa-2x"></i><br>
+            <span class="iconname">Upload</span></a>
+    </li>
+    <li>
+        <a href="/public/settinghtml"><i class="fa-sharp fa-solid fa-gear fa-2x"></i><br>
+            <span class="iconname">Setting</span></a>
+    </li>
+</ul>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">アップロード</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <i class="fa-sharp fa-solid fa-circle-arrow-up fa-10x mb-3"><label for="uploadFile"></label></i>
+                <div>
+                    <label for="uploadFile" class="btn btn-primary">ファイルを選択</label>
+                    <input id="uploadFile" type="file" style="display: none;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="submit-button">議事録を作成する</button>
+            </div>
+        </div>
+    </div>
 </div>
+
 <script src="https://kit.fontawesome.com/b3bb9c392c.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/upload.js"></script>

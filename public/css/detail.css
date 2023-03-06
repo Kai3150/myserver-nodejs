@@ -8,19 +8,6 @@
     font-family: 'Noto Serif JP', serif;
 }
 
-/* 戻るボタン--------------------------------------- */
-.return {
-    position: absolute;
-    width: 59px;
-    height: 59px;
-    left: 15%;
-    top: 25%;
-    opacity: 1;
-}
-
-.return:hover {
-    opacity: 0.5;
-}
 
 /* titile ------------------------------------ */
 .title{
@@ -37,14 +24,28 @@
 }
 
 /* content --------------------------------- */
-.text{
-    width: 55%;
 
-    font-family: 'Noto Serif JP';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 23px;
-    line-height: 38px;
+/* PCの時下のバーを消す。 */
+@media(min-width: 768px) {
+    .text {
+        width: 55%;
+        font-family: 'Noto Serif JP';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 23px;
+        line-height: 38px;
 
-    color: #D9D9D9;
+        color: #D9D9D9;
+    }
+}
+
+/* スマホの時横のバーを消す。 */
+@media(max-width: 767px) {
+    .text {
+            width: 100%;
+            font-family: 'Noto Serif JP';
+            font-style: normal;
+            line-height: 38px;
+            color: #D9D9D9;
+        }
 }

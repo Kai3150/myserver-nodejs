@@ -38,47 +38,35 @@
 
     <div class="flex-wrapper-two">
 
-        <a href="javascript:history.back()">
-            <div class="num-1-1">
-                <img alt="" class="return" src="https://static.overlay-tech.com/assets/3790ab4e-eed9-48ef-b511-82875c0a3340.svg" />
-            </div>
-        </a>
 
         <!-- title -->
-        <h1 class="title">
-                <%= keywords %>
-            </h1>
-
+        <h1 class="title"><%= keywords %></h1>
         <!-- content -->
-        <p class="text">
-                <%-content %>
-            </p>
+        <p class="text"><%-content %></p>
+    </div>
+    <ul class="menu fixed-bottom">
+        <li>
+            <a href="/public/datehtml"><i class="fa-solid fa-house fa-2x"></i><br>
+                <span class="iconname">Home</span></a>
+        </li>
+        <li>
+            <a href="/public/commenthtml?id=<%= id %>"><i class="fa-solid fa-comments fa-2x"></i><br>
+                <span class="iconname">Comment</span></a>
+        </li>
+        <li>
+            <a href="/public/searchhtml"><i class="fa-solid fa-magnifying-glass fa-2x"></i><br>
+                <span class="iconname">Search</span></a>
+        </li>
+        <li>
+            <a href="/public/uploadhtml"><i class="fa-solid fa-circle-plus fa-2x"></i><br>
+                <span class="iconname">Upload</span></a>
+        </li>
+        <li>
+            <a href="/public/settinghtml"><i class="fa-sharp fa-solid fa-gear fa-2x"></i><br>
+                <span class="iconname">Setting</span></a>
+        </li>
+    </ul>
 
-    </div>
-    <div class="bottom-menu">
-        <ul class="menu">
-            <li>
-                <a href="/public/datehtml"><i class="fa-solid fa-house fa-2x"></i><br>
-                    <span class="iconname">Home</span></a>
-            </li>
-            <li>
-                <a href="/public/commenthtml?id=<%= id %>"><i class="fa-solid fa-comments fa-2x"></i><br>
-                    <span class="iconname">Comment</span></a>
-            </li>
-            <li>
-                <a href="/public/searchhtml"><i class="fa-solid fa-magnifying-glass fa-2x"></i><br>
-                    <span class="iconname">Search</span></a>
-            </li>
-            <li>
-                <a href="/public/uploadhtml"><i class="fa-solid fa-circle-plus fa-2x"></i><br>
-                    <span class="iconname">Upload</span></a>
-            </li>
-            <li>
-                <a href="/public/settinghtml"><i class="fa-sharp fa-solid fa-gear fa-2x"></i><br>
-                    <span class="iconname">Setting</span></a>
-            </li>
-        </ul>
-    </div>
     <script src="https://kit.fontawesome.com/b3bb9c392c.js" crossorigin="anonymous"></script>
 
 </body>

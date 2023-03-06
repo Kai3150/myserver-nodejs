@@ -1,10 +1,3 @@
-async function insert() {
-    console.log('clicked');
-    await fetch("http://localhost:3000/insert")
-        .then(res => console.log(res.text));
-    console.log('success inserted');
-}
-
 const submitButton = document.getElementById('submit-button');
 const audioFileInput = document.getElementById('uploadFile');
 
@@ -24,10 +17,10 @@ submitButton.addEventListener('click', () => {
             'Content-Type': 'multipart/form-data'
         }
     })
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    .then(response => {
+        console.log(response.data);
+    })
+    .catch(error => {
+        console.error(error);
+    });
 });
